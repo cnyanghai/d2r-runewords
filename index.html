@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>暗黑2重制版 · 全符文之语图鉴</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#1d1b18; --panel:#26231e; --line:#3a352d; --text:#e6dcc8; --muted:#a39a88;
+  --gold:#c9a95c; --rune:#e39b3a; --s:#e39b3a; --a:#c9a95c; --b:#7d98d8; --c:#8c867b;
+  --tip:#0e0d0b; --tipline:#5a5042;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#e9e6df; --panel:#f5f3ee; --line:#cfc8ba; --text:#2a2620; --muted:#6c6457;
+    --gold:#8a6a1c; --rune:#b0620d; --s:#b0620d; --a:#8a6a1c; --b:#3b58a8; --c:#6c6457;
+    --tip:#1a1814; --tipline:#5a5042;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#e9e6df; --panel:#f5f3ee; --line:#cfc8ba; --text:#2a2620; --muted:#6c6457;
+  --gold:#8a6a1c; --rune:#b0620d; --s:#b0620d; --a:#8a6a1c; --b:#3b58a8; --c:#6c6457;
+}
+:root[data-theme="dark"]{
+  --bg:#1d1b18; --panel:#26231e; --line:#3a352d; --text:#e6dcc8; --muted:#a39a88;
+  --gold:#c9a95c; --rune:#e39b3a; --s:#e39b3a; --a:#c9a95c; --b:#7d98d8; --c:#8c867b;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Noto Serif SC","Songti SC","SimSun","STSong",serif;line-height:1.7;font-size:15px}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 18px 60px}
+header h1{font-weight:900;font-size:clamp(28px,5vw,46px);letter-spacing:.06em;margin:0;color:var(--gold);line-height:1.2}
+header p{color:var(--muted);max-width:62ch;margin:10px 0 0}
+.hero-runes{display:flex;flex-wrap:wrap;gap:6px;margin:18px 0 6px}
+.hero-runes span{font-size:12px;border:1px solid var(--line);padding:2px 7px;color:var(--rune);border-radius:2px}
+nav.tabs{display:flex;gap:4px;margin:26px 0 0;border-bottom:1px solid var(--line)}
+nav.tabs button{background:none;border:none;color:var(--muted);font:inherit;font-size:16px;padding:8px 14px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+nav.tabs button[aria-selected="true"]{color:var(--text);border-bottom-color:var(--gold);font-weight:600}
+button:focus-visible,input:focus-visible,select:focus-visible,.row:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.filters{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:14px 0 10px;display:grid;gap:10px;border-bottom:1px solid var(--line)}
+.frow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.frow .lab{color:var(--muted);font-size:13px;min-width:3.5em}
+input[type=search],select{font:inherit;font-size:14px;background:var(--panel);color:var(--text);border:1px solid var(--line);padding:7px 10px;border-radius:3px}
+input[type=search]{flex:1;min-width:200px}
+.chip{font:inherit;font-size:13px;background:var(--panel);color:var(--text);border:1px solid var(--line);padding:4px 11px;border-radius:3px;cursor:pointer}
+.chip[aria-pressed="true"]{border-color:var(--gold);color:var(--gold);font-weight:600}
+.count{color:var(--muted);font-size:13px;margin-left:auto}
+.list{margin-top:6px}
+.head,.row{display:grid;grid-template-columns:minmax(150px,1.2fr) minmax(210px,1.6fr) 44px minmax(150px,1.3fr) 48px minmax(110px,1fr) 44px;gap:10px;align-items:center;padding:10px 8px}
+.head{color:var(--muted);font-size:13px;border-bottom:1px solid var(--line)}
+.head button{background:none;border:none;color:inherit;font:inherit;cursor:pointer;padding:0;text-align:left}
+.row{border-bottom:1px solid var(--line);cursor:pointer}
+.row:hover{background:var(--panel)}
+.nm b{display:block;color:var(--gold);font-size:16px;font-weight:600}
+.nm small{color:var(--muted);font-size:12px}
+.nm .ver{font-size:11px;color:var(--b);margin-left:6px}
+.rn{display:flex;flex-wrap:wrap;gap:4px}
+.rn span{font-size:12px;color:var(--rune);border:1px solid var(--line);padding:1px 6px;border-radius:2px;white-space:nowrap}
+.rn span i{font-style:normal;color:var(--muted);margin-left:3px}
+.soc{text-align:center}
+.base{font-size:13px}
+.lv{text-align:center;font-weight:600}
+.cls{font-size:13px;color:var(--muted)}
+.tier{font-weight:900;font-size:18px;text-align:center}
+.t-S{color:var(--s)}.t-A{color:var(--a)}.t-B{color:var(--b)}.t-C{color:var(--c)}
+.detail{display:none;padding:4px 8px 22px;border-bottom:1px solid var(--line)}
+.detail.open{display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:22px}
+.tooltip{background:var(--tip);border:1px solid var(--tipline);color:#8a8aee;text-align:center;padding:14px 16px;font-size:14px;line-height:1.75}
+.tooltip .t1{color:#c9a95c;font-size:17px;font-weight:600}
+.tooltip .t2{color:#9a9a9a;font-size:13px}
+.tooltip .t3{color:#e6c07a;margin:6px 0 8px;font-size:13px}
+.tooltip .req{color:#e6dcc8;font-size:13px}
+.info dl{margin:0;display:grid;grid-template-columns:5.5em 1fr;gap:6px 12px}
+.info dt{color:var(--muted);font-size:13px}
+.info dd{margin:0}
+.empty{padding:40px 8px;color:var(--muted)}
+section[hidden]{display:none}
+.runes-table{width:100%;border-collapse:collapse;margin-top:18px}
+.runes-table th,.runes-table td{border-bottom:1px solid var(--line);padding:8px;text-align:left;font-size:14px}
+.runes-table th{color:var(--muted);font-weight:400;font-size:13px}
+.runes-table td:first-child{color:var(--rune);font-weight:600}
+.scroll{overflow-x:auto}
+.notes{max-width:72ch}
+.ch{color:var(--gold);font-size:20px;margin:28px 0 8px}
+.notes h2{color:var(--gold);font-size:20px;margin:28px 0 8px}
+.notes p,.notes li{color:var(--text)}
+.notes .tierline{display:grid;grid-template-columns:2em 1fr;gap:4px 10px}
+.theme{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));font:inherit;font-size:13px;background:var(--panel);color:var(--text);border:1px solid var(--line);padding:6px 10px;border-radius:3px;cursor:pointer}
+@media (max-width:860px){
+  .head{display:none}
+  .row{grid-template-columns:1fr auto;grid-template-areas:"nm tier" "rn rn" "meta meta"}
+  .row .nm{grid-area:nm}.row .tier{grid-area:tier}.row .rn{grid-area:rn}
+  .row .soc,.row .base,.row .lv,.row .cls{display:none}
+  .row .meta{grid-area:meta;display:block;font-size:13px;color:var(--muted)}
+  .detail.open{grid-template-columns:1fr}
+}
+@media (min-width:861px){.row .meta{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>符文之语 · 全图鉴</h1>
+  <p>暗黑破坏神2：重制版全部 99 个符文之语（含 2.4、2.6 与「术士之治」3.x 新增），附符文编号、底材、最佳底材、穿戴等级、适用职业、核心属性与强度评级。点击任意一行展开游戏内风格的属性卡。</p>
+  <div class="hero-runes" id="heroRunes"></div>
+</header>
+
+<nav class="tabs" role="tablist">
+  <button role="tab" aria-selected="true" data-tab="rw">符文之语</button>
+  <button role="tab" aria-selected="false" data-tab="runes">33 颗符文</button>
+  <button role="tab" aria-selected="false" data-tab="cube">赫拉迪克方块</button>
+  <button role="tab" aria-selected="false" data-tab="notes">评级与制作规则</button>
+</nav>
+
+<section id="tab-rw">
+  <div class="filters">
+    <div class="frow">
+      <input type="search" id="q" placeholder="搜索名称、符文或底材，如：谜团 / Ber / 长柄">
+      <select id="cls" aria-label="按职业筛选">
+        <option value="">全部职业</option>
+        <option>通用</option><option>雇佣兵</option><option>亚马逊</option><option>刺客</option><option>野蛮人</option><option>德鲁伊</option><option>死灵法师</option><option>圣骑士</option><option>法师</option><option>术士</option>
+      </select>
+      <select id="sort" aria-label="排序">
+        <option value="lvl">按等级排序</option>
+        <option value="tier">按评级排序</option>
+        <option value="sock">按孔数排序</option>
+      </select>
+    </div>
+    <div class="frow" id="slotChips"><span class="lab">部位</span></div>
+    <div class="frow" id="tierChips"><span class="lab">评级</span><span class="count" id="count"></span></div>
+  </div>
+  <div class="list">
+    <div class="head">
+      <span>名称</span><span>符文（顺序镶嵌）</span><span>孔</span><span>可用底材</span><span>等级</span><span>推荐职业</span><span>评级</span>
+    </div>
+    <div id="rows"></div>
+  </div>
+</section>
+
+<section id="tab-runes" hidden>
+  <p class="notes" style="margin-top:18px">括号里的数字就是「几号符文」。在赫拉迪克方块中可以升级符文：1–9 号用 3 颗同号符文合成下一颗；10–20 号需 3 颗加一颗宝石；21 号以上需 2 颗加一颗宝石。</p>
+  <div class="scroll">
+  <table class="runes-table">
+    <thead><tr><th>编号</th><th>中文名</th><th>英文名</th><th>常用于</th></tr></thead>
+    <tbody id="runeRows"></tbody>
+  </table>
+  </div>
+</section>
+
+
+<section id="tab-cube" hidden>
+  <p class="notes" style="margin-top:18px">赫拉迪克方块从第二幕的法老之墓里拿到之后就一直带在身上：把材料放进去点「转换」即可。宝石品质由低到高是碎裂、瑕疵、普通、无瑕、完美，下面的配方里写的是最终需要的那一档。</p>
+
+  <h2 class="ch">符文升级</h2>
+  <p class="notes">这是刷高级符文最主要的途径。1–9 号三颗合一颗，10–20 号三颗加一颗宝石，21 号以上两颗加一颗宝石。萨德是最高级符文，无法再升。</p>
+  <div class="scroll"><table class="runes-table"><thead><tr><th>合成</th><th>需要</th><th>得到</th></tr></thead><tbody id="upRows"></tbody></table></div>
+
+  <h2 class="ch">宝石与骷髅头升级</h2>
+  <ul class="notes">
+    <li>3 颗同种同级宝石 = 1 颗高一级的同种宝石（碎裂→瑕疵→普通→无瑕→完美）。</li>
+    <li>骷髅头同理，3 颗合 1 颗。</li>
+    <li>刷符文时，顺手把杂宝石合上来，升级符文就不会卡在宝石上。</li>
+  </ul>
+
+  <h2 class="ch">打孔与拆孔</h2>
+  <div class="scroll"><table class="runes-table"><thead><tr><th>目的</th><th>配方</th><th>说明</th></tr></thead><tbody>
+    <tr><td>武器打孔</td><td>拉尔 + 安姆 + 完美紫水晶 + 无孔武器</td><td>孔数随机，上限由物品等级决定</td></tr>
+    <tr><td>头盔打孔</td><td>拉尔 + 书尔 + 完美蓝宝石 + 无孔头盔</td><td>同上</td></tr>
+    <tr><td>盔甲打孔</td><td>塔尔 + 书尔 + 完美托帕石 + 无孔盔甲</td><td>同上</td></tr>
+    <tr><td>盾牌打孔</td><td>塔尔 + 安姆 + 完美红宝石 + 无孔盾牌</td><td>同上</td></tr>
+    <tr><td>清空孔位</td><td>海尔 + 复原卷轴 + 已镶嵌的物品</td><td>物品变回空孔，里面的符文/宝石全部销毁</td></tr>
+  </tbody></table></div>
+  <p class="notes">想要固定的最大孔数，用第五幕拉苏克的任务奖励：给白色普通装备打孔时他会直接给该底材的最大孔数，这是做符文之语最稳的办法。</p>
+
+  <h2 class="ch">装备升级（普通→精良→精英）</h2>
+  <div class="scroll"><table class="runes-table"><thead><tr><th>类型</th><th>普通 → 精良</th><th>精良 → 精英</th></tr></thead><tbody>
+    <tr><td>暗金武器</td><td>拉尔 + 索尔 + 完美绿宝石</td><td>卢姆 + 普尔 + 完美绿宝石</td></tr>
+    <tr><td>暗金盔甲/盾牌</td><td>塔尔 + 沙尔 + 完美钻石</td><td>科 + 蓝姆 + 完美钻石</td></tr>
+  </tbody></table></div>
+  <p class="notes">升级会提高底材的基础伤害/防御和属性需求，但不会改变原有词缀。套装和稀有装备也有对应的升级配方，符文组合与暗金不同，建议在游戏内的配方书或资料站上核对后再动手——升级不可逆。</p>
+
+  <h2 class="ch">洗属性</h2>
+  <ul class="notes">
+    <li>3 颗完美宝石（同一种）+ 1 件魔法物品 = 重掷该魔法物品的属性。</li>
+    <li>6 颗完美宝石（六种各一颗）+ 1 件稀有物品 = 重掷该稀有物品的属性。</li>
+    <li>重掷结果完全随机，物品等级会按角色等级重新计算，有可能变差。</li>
+  </ul>
+
+  <h2 class="ch">制作装备（Crafted）</h2>
+  <p class="notes">配方结构固定：<b>魔法品质底材 + 指定符文 + 指定完美宝石 + 1 颗珠宝</b>。四大系列对应的宝石是：</p>
+  <ul class="notes">
+    <li>血腥（Blood）——完美红宝石：生命、吸血、压碎性打击</li>
+    <li>卡那（Caster）——完美紫水晶：施法速度、+技能、法力</li>
+    <li>狩猎者（Hit Power）——完美钻石：命中、致盲、压碎</li>
+    <li>安全（Safety）——完美绿宝石：防御、抗性、格挡</li>
+  </ul>
+  <p class="notes">每个部位（头盔、盔甲、盾牌、手套、腰带、鞋子、戒指、护身符）需要的符文不同，制作出来的装备会带 1–4 条该系列固定词缀加随机词缀。想要精确到部位的符文，看游戏内的赫拉迪克方块配方书。</p>
+
+  <h2 class="ch">任务与红门</h2>
+  <div class="scroll"><table class="runes-table"><thead><tr><th>用途</th><th>配方</th></tr></thead><tbody>
+    <tr><td>赫拉迪克法杖（第二幕）</td><td>君王之杖 + 毒蛇护身符</td></tr>
+    <tr><td>卡林的意志（第三幕）</td><td>卡林的眼 + 卡林的脑 + 卡林的心 + 卡林的连枷</td></tr>
+    <tr><td>秘密奶牛关</td><td>维特的腿 + 城镇传送卷轴（在第一幕营地转换）</td></tr>
+    <tr><td>Uber 小 Boss 红门</td><td>恐惧之钥 + 仇恨之钥 + 毁灭之钥</td></tr>
+    <tr><td>Uber 崔斯特姆红门</td><td>暗黑破坏神之角 + 巴尔之眼 + 墨菲斯托之脑（在第五幕营地转换）</td></tr>
+    <tr><td>赦免代币（洗技能点/属性点）</td><td>扭曲的痛苦精华 + 充能的仇恨精华 + 燃烧的恐惧精华 + 腐臭的毁灭精华</td></tr>
+    <tr><td>巨神古代者红门（术士之治）</td><td>5 尊巨神古代者雕像（被恐惧地区的幕 Boss 掉落）</td></tr>
+  </tbody></table></div>
+
+  <h2 class="ch">杂项</h2>
+  <ul class="notes">
+    <li>3 瓶治疗药水 + 3 瓶法力药水 + 1 颗碎裂宝石 = 1 瓶完全恢复药水。</li>
+    <li>3 瓶恢复药水 = 1 瓶完全恢复药水。</li>
+    <li>方块本身可以当背包用（能放 12 格），跑图时很方便。</li>
+  </ul>
+</section>
+
+<section id="tab-notes" class="notes" hidden>
+  <h2>评级怎么看</h2>
+  <div class="tierline">
+    <b class="t-S">S</b><span>毕业级或改变玩法：谜团、无限、战争召唤、眼光、精神、悲伤等，几乎所有攻略都会用到。</span>
+    <b class="t-A">A</b><span>主流强力：某职业/某流派的首选，或高性价比过渡神器。</span>
+    <b class="t-B">B</b><span>实用：特定流派、雇佣兵或练级阶段表现不错。</span>
+    <b class="t-C">C</b><span>冷门或已被替代：属性一般，多用于收藏或极特殊玩法。</span>
+  </div>
+  <p>评级是综合社区共识后的主观判断，默认以地狱难度、常规天梯环境为标准；同一符文之语在不同流派里价值差别很大（比如「迷雾」对弓马是 A，对法师毫无用处）。</p>
+
+  <h2>制作规则</h2>
+  <ul>
+    <li>底材必须是白色或灰色（普通/超强/无形）物品，蓝、黄、绿、暗金装备都不行。</li>
+    <li>孔数必须刚好等于符文数量，符文要按列出的顺序从左到右镶嵌。</li>
+    <li>加孔：拉苏克任务（第五幕）、赫拉迪克方块配方，或直接找已有孔数的白装。</li>
+    <li>无形（Eth）底材：武器伤害 +50%、护甲防御 +50%，但不可修理；带「不可破坏」的符文之语（死亡之息、执念、虚空等）或雇佣兵使用时，无形底材通常是最优选择。</li>
+    <li>底材基础属性会直接影响最终数值：加伤害的符文之语选高伤底材，加防御的选高防底材，想省力量需求就选需求低的底材。</li>
+  </ul>
+
+  <h2>版本说明</h2>
+  <ul>
+    <li>「原版/1.09/1.10/1.11」为经典符文之语；「2.4」「2.6」为重制版追加；「3.0」为 2026 年 2 月「术士之治（Reign of the Warlock）」资料片新增的 5 个：权威、女巫集会、虚空、仪式、警戒。</li>
+    <li>3.2 补丁后，术士装备双手武器时副手只能放魔典；虚空、仪式是匕首（单手），可以搭配盾牌类符文之语。</li>
+    <li>中文名采用常见叫法，不同版本翻译可能略有出入，搜索时用英文名最稳。数值取常见范围，个别条目只列核心属性；「虚空」的精确等级需求未能核实，按其所需萨德符文推算为 69。</li>
+    <li>数据整理于 2026 年 9 月（第 15 赛季、3.3 补丁）。后续平衡补丁可能调整数值，请以游戏内为准。</li>
+  </ul>
+</section>
+</div>
+<button class="theme" id="themeBtn" type="button">切换明暗</button>
+
+<script>
+const RUNES=[["El","艾尔"],["Eld","埃德"],["Tir","特尔"],["Nef","那夫"],["Eth","爱斯"],["Ith","伊司"],["Tal","塔尔"],["Ral","拉尔"],["Ort","欧特"],["Thul","书尔"],["Amn","安姆"],["Sol","索尔"],["Shael","沙尔"],["Dol","多尔"],["Hel","海尔"],["Io","埃欧"],["Lum","卢姆"],["Ko","科"],["Fal","法尔"],["Lem","蓝姆"],["Pul","普尔"],["Um","乌姆"],["Mal","马尔"],["Ist","伊司特"],["Gul","古尔"],["Vex","伐克斯"],["Ohm","欧姆"],["Lo","罗"],["Sur","瑟"],["Ber","贝"],["Jah","乔"],["Cham","查姆"],["Zod","萨德"]];
+const RUNE_USE={El:"低级符文之语、防御/命中",Eld:"对不死、格挡",Tir:"杀怪回魔",Nef:"击退、远程防御",Eth:"降敌防御、回魔",Ith:"加最大伤害",Tal:"毒伤、毒抗",Ral:"火伤、火抗",Ort:"电伤、电抗",Thul:"冰伤、冰抗",Amn:"吸血、反伤",Sol:"加最小伤害、减伤",Shael:"攻速/恢复/格挡速度",Dol:"怪物逃跑、回血",Hel:"降低需求（等级需求最低）",Io:"+10 体力",Lum:"+10 精力",Ko:"+10 敏捷",Fal:"+10 力量",Lem:"额外金币",Pul:"对恶魔伤害、防御",Um:"撕裂伤口、全抗",Mal:"阻止回血、减魔伤",Ist:"MF 寻宝",Gul:"命中、毒抗上限",Vex:"偷魔、火抗上限",Ohm:"伤害%、冰抗上限",Lo:"致命一击、电抗上限",Sur:"致盲、法力",Ber:"压碎性打击、物理减伤8%",Jah:"无视防御、生命%",Cham:"冻结、免冻",Zod:"不可破坏"};
+const RN={};RUNES.forEach((r,i)=>RN[r[0]]={n:i+1,cn:r[1]});
+
+const D=[
+["天底","Nadir","Nef Tir","头盔","头盔",13,"通用","C","任意2孔头盔","+50%增强防御|+10防御|+30远程防御|+5力量|杀怪回魔+2|额外金币-33%|-3光照半径|13级暗影斗篷(9次充能)","原版","潜行流的早期头盔，实战几乎被知识取代。"],
+["钢铁","Steel","Tir El","武器","剑/斧/钉头锤",13,"通用","B","2孔弯刀、短剑等低需求武器","+20%增强伤害|+25%攻击速度|+3最小伤害|+3最大伤害|+50命中|50%撕裂伤口|杀怪回魔+2|+1光照半径","原版","近战开荒首选之一，材料在第一幕就能凑齐。"],
+["恶意","Malice","Ith El Eth","武器","近战武器",15,"通用","B","3孔长剑、军刀","+33%增强伤害|+9最大伤害|+50命中|-25%目标防御|100%撕裂伤口|阻止怪物回血|每次命中-100怪物防御|生命恢复-5|+1光照半径","原版","伤害高，但会持续掉血，需要靠吸血或药水补。"],
+["隐密","Stealth","Tal Eth","盔甲","盔甲",17,"通用","A","2孔轻甲（皮甲、缀钉皮甲）","+25%跑步/行走速度|+25%施法速度|+25%恢复速度|+6敏捷|+15最大体力|毒抗+30%|法力回复15%|魔法减伤3","原版","全职业开荒必做，两颗符文女伯爵常掉。"],
+["叶子","Leaf","Tir Ral","武器","法杖（不含权杖）",19,"法师/术士","A","2孔法杖，最好自带+火系技能","+3火系技能|火焰伤害5-30|+3地狱火(法师)|+3火弹(法师)|+3暖气(法师)|防御+2/角色等级|冰抗+33%|杀怪回魔+2","原版","火法开荒神器；术士也能吃到+3火系技能。"],
+["古代的誓约","Ancients' Pledge","Ral Ort Tal","盾牌","任意盾牌",21,"通用","B","3孔圣骑士盾（自带抗性可叠加）","+50%增强防御|冰抗+30%|火抗+35%|电抗+35%|毒抗+35%|全抗+13|10%伤害转为法力","原版","进入噩梦前补抗性的廉价方案。"],
+["神圣之雷","Holy Thunder","Eth Ral Ort Tal","武器","权杖",21,"圣骑士","C","4孔战争权杖","+60%增强伤害|+10最大伤害|-25%目标防御|火伤5-30|电伤21-110|毒伤75/5秒|+3神圣冲击(圣骑士)|电抗+60%|电抗上限+5%|7级连锁闪电(60次充能)","原版","早期电系圣骑可用，很快被眼光、精神取代。"],
+["和风","Zephyr","Ort Eth","武器","远程武器",21,"亚马逊","C","2孔短弓、猎人之弓","+33%增强伤害|+25%跑步速度|+25%攻击速度|-25%目标防御|+66命中|电伤1-50|+25防御|被击中7%几率释放1级龙卷风","原版","弓马开荒过渡。"],
+["图样","Pattern","Tal Ort Thul","武器","爪",23,"刺客","C","3孔爪","+40-80%增强伤害|+30%格挡速度|+10%命中加成|火伤12-32|电伤1-50|冰伤3-14|毒伤75/5秒|+6力量|+6敏捷|全抗+15","2.4","刺客早期双爪过渡，属性平庸。"],
+["边缘","Edge","Tir Tal Amn","武器","远程武器",25,"雇佣兵","C","3孔弓（给罗格雇佣兵）","15级荆棘光环|+35%攻击速度|对恶魔+320-380%伤害|对不死+280%伤害|毒伤75/5秒|7%吸血|阻止怪物回血|+5-10全属性|杀怪回魔+2|商店价格-15%","1.10","主要价值是荆棘光环和减少商店价格。"],
+["国王的恩典","King's Grace","Amn Ral Thul","武器","剑/权杖",25,"通用","C","3孔长剑","+100%增强伤害|+150命中|对恶魔+100%伤害、+100命中|对不死+50%伤害、+100命中|火伤5-30|冰伤3-14|7%吸血","原版","过渡品。"],
+["神话","Myth","Hel Amn Nef","盔甲","盔甲",25,"野蛮人","C","3孔盔甲","击中10%几率释放1级挑衅|被击中3%几率释放1级嚎叫|+2野蛮人技能|+30远程防御|生命恢复+10|反伤14|需求-15%","1.11","野蛮人开荒可选。"],
+["精神","Spirit","Tal Thul Ort Amn","武器/盾牌","剑、任意盾牌",25,"通用","S","剑：4孔水晶剑；盾：君主盾（力量156）或带抗性的4孔圣骑士盾","+2全技能|+25-35%施法速度|+55%恢复速度|+250远程防御|+22体力|+89-112法力|魔法吸收3-8%|盾牌：冰/电/毒抗各+35%、反伤14|武器：火/冰/电/毒伤、7%吸血","1.10","从开荒用到毕业的性价比之王，施法职业人手两件。"],
+["力量","Strength","Amn Tir","武器","近战武器",25,"通用","B","2孔近战武器","+35%增强伤害|7%吸血|25%压碎性打击|+20力量|+10体力|杀怪回魔+2","原版","近战开荒，压碎性打击打 Boss 好用。"],
+["荣耀","Honor","Amn El Ith Tir Sol","武器","近战武器",27,"通用","B","5孔水晶剑、连枷","+1全技能|+160%增强伤害|+9最小伤害|+9最大伤害|+250命中|7%吸血|25%致命一击|+10力量|生命恢复+10|杀怪回魔+2|+1光照半径","原版","材料便宜的中期近战武器。"],
+["眼光","Insight","Ral Tir Tal Sol","武器","长柄、法杖、弓/弩",27,"雇佣兵","S","无形巨神之镰、无形秘法斧、无形长柄镰刀（二幕雇佣兵）","12-17级冥想光环|+35%施法速度|+200-260%增强伤害|+9最小伤害|+180-250%命中加成|火伤5-30|毒伤75/5秒|+1-6致命打击|+5全属性|杀怪回魔+2|23% MF","1.10","二幕雇佣兵标配，冥想光环彻底解决蓝量问题；2.4 起可做在弓弩上。"],
+["知识","Lore","Ort Sol","头盔","头盔",27,"通用","A","2孔带+技能的德鲁伊毛皮/野蛮人头盔/头环","+1全技能|+10精力|电抗+30%|减伤7|杀怪回魔+2|+2光照半径","原版","开荒头盔首选，两颗低级符文换+1全技能。"],
+["光辉","Radiance","Nef Sol Ith","头盔","头盔",27,"通用","C","3孔头盔","+75%增强防御|+30远程防御|+10体力|+10精力|+33法力|减伤7|魔法减伤3|15%伤害转为法力|+5光照半径","原版","不如知识实用。"],
+["权威","Authority","Hel Shael Ral","盔甲","盔甲",29,"术士","A","3孔法师铠甲（力量需求低）","击中10%几率释放15级瘴气锁链|被击中2%几率释放10级心灵壁垒|+2术士技能|+40-60%增强伤害|+20%恢复速度|火抗+30%|需求-15%","3.0","术士开荒核心，可一路用到刚毅或谜团。"],
+["和平","Peace","Shael Thul Amn","盔甲","盔甲",29,"亚马逊","C","3孔盔甲","击中2%几率释放15级女武神|被击中4%几率释放5级缓慢飞弹|+2亚马逊技能|+20%恢复速度|+2致命打击|冰抗+30%|反伤14","1.11","弓马开荒可用，白嫖一个女武神。"],
+["押韵","Rhyme","Shael Eth","盾牌","任意盾牌",29,"通用","B","2孔死灵头颅、圣骑士盾（带抗性）","+60%格挡速度|法力回复15%|全抗+25|免疫冻结|50%额外金币|25% MF","原版","免疫冻结+抗性，开荒和 MF 都实用。"],
+["黑色","Black","Thul Io Nef","武器","棍棒/战锤/钉头锤",35,"通用","C","3孔连枷、战锤","+120%增强伤害|+15%攻击速度|+200命中|冰伤3-14|40%压碎性打击|击退|+10体力|魔法减伤2|4级尸体爆炸(12次充能)","原版","压碎性打击高，打 Boss 的廉价选择。"],
+["白色","White","Dol Io","武器","魔杖",35,"死灵法师","A","2孔骨魔杖（最好自带+骨矛/+骷髅精通）","+3毒素与白骨技能(死灵)|+20%施法速度|+3骨甲|+2骨矛|+4骷髅精通|25%击中使怪物逃跑|+10体力|+13法力|魔法减伤4","原版","死灵开荒神器，召唤流和骨矛流通吃。"],
+["大地","Ground","Shael Io Ort","头盔","头盔",35,"通用","B","3孔头盔","+20%恢复速度|+75-100%增强防御|+10体力|最大生命+5%|电抗+40-60%|吸收电伤10-15","2.6","专门对付闪电伤害的抗性头盔。"],
+["淬炼","Temper","Shael Io Ral","头盔","头盔",35,"通用","B","3孔头盔","+20%恢复速度|+75-100%增强防御|+10体力|最大生命+5%|火抗+40-60%|吸收火伤10-15","2.6","补火抗，打混沌避难所很舒服。"],
+["炉火","Hearth","Shael Io Thul","头盔","头盔",35,"通用","B","3孔头盔","+20%恢复速度|+75-100%增强防御|+10体力|最大生命+5%|冰抗+40-60%|吸收冰伤10-15|免疫冻结","2.6","近战职业缺免冻时很好用。"],
+["治愈","Cure","Shael Io Tal","头盔","头盔",35,"通用","B","3孔头盔","1级净化光环|+20%恢复速度|+75-100%增强防御|+10体力|最大生命+5%|毒抗+40-60%|中毒时间-50%","2.6","净化光环缩短诅咒和中毒时间。"],
+["堡垒","Bulwark","Shael Io Sol","头盔","头盔",35,"通用","B","3孔头盔","+20%恢复速度|4-6%吸血|+75-100%增强防御|+10体力|最大生命+5%|生命恢复+30|减伤7|物理减伤10-15%","2.6","近战和雇佣兵的生存头盔，物理减伤很实用。"],
+["记忆","Memory","Lum Io Sol Eth","武器","法杖",37,"法师","B","4孔战斗法杖（带+技能）","+3法师技能|+33%施法速度|+9最小伤害|-25%目标防御|+3能量护盾|+2静电力场|+50%增强防御|+10体力|+10精力|最大法力+20%|魔法减伤7","原版","法师中期过渡武器。"],
+["烟雾","Smoke","Nef Lum","盔甲","盔甲",37,"通用","A","2孔轻甲","+20%恢复速度|+75%增强防御|+280远程防御|+10精力|全抗+50|-1光照半径|6级衰弱(18次充能)","原版","两颗普通符文换全抗+50，进地狱前的救命甲。"],
+["光彩","Splendor","Eth Lum","盾牌","任意盾牌、魔典",37,"通用","B","2孔死灵头颅、圣骑士盾、魔典","+1全技能|+10%施法速度|+20%格挡速度|+60-100%增强防御|+10精力|法力回复15%|50%额外金币|20% MF|+3光照半径","1.10","施法职业的廉价副手；术士可以做在魔典上。"],
+["和谐","Harmony","Tir Ith Sol Ko","武器","远程武器",39,"亚马逊","C","4孔弓","10级活力光环|+200-275%增强伤害|+9最小伤害|+9最大伤害|火/电/冰伤55-160|+2-6女武神|+10敏捷|法力回复20%|杀怪回魔+2|+2光照半径|20级复活(25次充能)","1.10","活力光环加跑速，现在多用于刷图代步。"],
+["旋律","Melody","Shael Ko Nef","武器","远程武器",39,"亚马逊","C","3孔弓","+3弓弩技能(亚马逊)|+50%增强伤害|+20%攻击速度|对不死+300%伤害|+3致命打击|+3闪避|+3缓慢飞弹|击退|+10敏捷","原版","过渡弓。"],
+["歇斯底里","Hysteria","Shael Ko Eld","盔甲","盔甲",39,"通用","B","3孔轻甲","+65%跑步/行走速度|+40%攻击速度|+20%恢复速度|+6闪避|+10敏捷|体力消耗-50%|全抗+10","2.6","跑速极高，适合速刷和没有传送的职业。"],
+["狂躁","Mania","Shael Ko Eld","武器","任意武器",39,"通用","C","3孔武器","击中5%几率释放1级加速爆发|1级狂热光环|+30%攻击速度|+180-200%增强伤害|对不死+75%伤害、+50命中|+10敏捷","2.6","自带狂热光环，中期近战或雇佣兵可用。"],
+["狮心","Lionheart","Hel Lum Fal","盔甲","盔甲",41,"通用","B","3孔盔甲","+20%增强伤害|+25力量|+15敏捷|+20体力|+10精力|+50生命|全抗+30|需求-15%","原版","中期全属性盔甲，能帮你凑装备力量需求。"],
+["顺从","Obedience","Hel Ko Thul Eth Fal","武器","长柄/长矛",41,"雇佣兵","B","5孔无形长柄武器（二幕雇佣兵）","击杀30%几率释放21级强化|+370%增强伤害|+40%恢复速度|-25%目标防御|冰伤3-14|-25%敌方火抗|40%压碎性打击|+200-300防御|+10力量|+10敏捷|全抗+20-30|需求-20%","1.10","雇佣兵中期武器，抗性和压碎都不错。"],
+["不屈意志","Unbending Will","Fal Io Ith Eld El Hel","武器","剑",41,"野蛮人","B","6孔巨神之刃、水晶剑","击中18%几率释放18级挑衅|+3战斗技能(野蛮人)|+300-350%增强伤害|+20-30%攻击速度|+9最大伤害|+50命中|对不死+75%伤害、+50命中|8-10%吸血|阻止怪物回血|+10力量|+10体力|减伤8|+1光照半径|需求-20%","2.4","野蛮人中期武器，吸血很高。"],
+["执法者","Lawbringer","Amn Lem Ko","武器","剑/战锤/权杖",43,"通用","B","3孔水晶剑、相位剑","击中20%几率释放15级衰老|16-18级圣所光环|-50%目标防御|火伤150-210|冰伤130-180|7%吸血|杀死的怪物安息(不复活)|+200-250远程防御|+10敏捷|75%额外金币","1.10","圣所光环克制不死系，配合衰老很强。"],
+["激情","Passion","Dol Ort Eld Lem","武器","任意武器",43,"通用","C","4孔武器","+160-210%增强伤害|+25%攻击速度|+50-80%命中加成|对不死+75%伤害、+50命中|电伤1-50|+1狂热|+1狂战士|致盲+10|25%击中使怪物逃跑|75%额外金币|3级野狼之心(12次充能)","1.10","属性散，冷门。"],
+["理智之声","Voice of Reason","Lem Ko El Eld","武器","剑/钉头锤",43,"通用","C","4孔水晶剑、相位剑","击中18%几率释放20级冰爆|15%几率释放13级冰封球|+50命中|对恶魔+220-350%伤害|对不死+355-375%伤害、+50命中|冰伤100-220|-24%敌方冰抗|+10敏捷|免疫冻结|75%额外金币|+1光照半径","1.10","专打恶魔/不死区域，通用性差。"],
+["背叛","Treachery","Shael Thul Lem","盔甲","盔甲",43,"刺客/雇佣兵","A","3孔轻甲","击中25%几率释放15级毒液|被击中5%几率释放15级隐退|+2刺客技能|+45%攻击速度|+20%恢复速度|冰抗+30%|50%额外金币","1.11","隐退能给雇佣兵大量抗性和物理减伤，性价比极高。"],
+["财富","Wealth","Lem Ko Tir","盔甲","盔甲",43,"通用","B","3孔轻甲","+10敏捷|杀怪回魔+2|300%额外金币|100% MF","原版","纯 MF 装，没有任何防御属性。"],
+["启发","Enlightenment","Pul Ral Sol","盔甲","盔甲",45,"法师","C","3孔盔甲","击中5%几率释放15级火球|被击中5%几率释放15级烈焰|+2法师技能|+1暖气|+30%增强防御|火抗+30%|减伤7","1.11","法师中期过渡。"],
+["智慧","Wisdom","Pul Ith Eld","头盔","头盔",45,"亚马逊/近战","B","3孔头环、头盔","33%穿透攻击|+15-25%命中加成|4-8%偷取法力|+30%增强防御|+10精力|体力消耗-15%|免疫冻结|杀怪回魔+5|15%伤害转为法力","2.4","穿透和偷魔对弓马很实用，还自带免冻。"],
+["白骨","Bone","Sol Um Um","盔甲","盔甲",47,"死灵法师","B","3孔盔甲","击中15%几率释放10级骨矛|被击中15%几率释放10级骨甲|+2死灵技能|+100-150法力|全抗+30|减伤7","1.11","死灵中期甲。"],
+["新月","Crescent Moon","Shael Um Tir","武器","斧/剑/长柄",47,"雇佣兵","B","3孔无形长柄（雇佣兵）、相位剑","击中7%几率释放13级静电力场|10%几率释放17级连锁闪电|+180-220%增强伤害|+20%攻击速度|无视目标防御|-35%敌方电抗|25%撕裂伤口|魔法吸收9-11%|杀怪回魔+2|18级召唤幽狼(30次充能)","1.10","静电力场快速削血，是无限之前的过渡。"],
+["强制","Duress","Shael Um Thul","盔甲","盔甲",47,"通用","C","3孔盔甲","+10-20%增强伤害|+40%恢复速度|冰伤37-133|15%压碎性打击|33%撕裂伤口|+150-200%增强防御|体力消耗-20%|冰抗+30%|全抗+15","1.10","近战的廉价选择。"],
+["忧郁","Gloom","Fal Um Pul","盔甲","盔甲",47,"通用","C","3孔盔甲","被击中15%几率释放3级暗影视界|+10%恢复速度|+200-260%增强防御|+10力量|全抗+45|冻结时间减半|5%伤害转为法力|-3光照半径","1.10","抗性可以，但减光照很难受。"],
+["石块","Stone","Shael Um Pul Lum","盔甲","盔甲",47,"通用","C","4孔盔甲","+60%恢复速度|+250-290%增强防御|+300远程防御|+16力量|+16体力|+10精力|全抗+15|16级黏土石魔(16次充能)|16级熔岩巨石(80次充能)","1.10","防御高但缺少关键属性。"],
+["誓约","Oath","Shael Pul Mal Lum","武器","剑/斧/钉头锤",49,"通用","C","4孔无形武器（不可破坏可用无形）","击中30%几率释放20级骨灵|+210-340%增强伤害|+50%攻击速度|对恶魔+75%伤害、+100命中|阻止怪物回血|+10精力|魔法吸收10-15%|17级铁石魔(14次充能)|16级野狼之心(20次充能)|不可破坏","1.10","不可破坏适合无形底材，整体强度一般。"],
+["谨慎","Prudence","Mal Tir","盔甲","盔甲",49,"雇佣兵","B","2孔无形盔甲（会自动修复）","+25%恢复速度|+140-170%增强防御|全抗+25-35|减伤3|魔法减伤17|杀怪回魔+2|+1光照半径|每25秒修复1点耐久","1.10","两颗符文换全抗，还能自修无形底材。"],
+["雨","Rain","Ort Mal Ith","盔甲","盔甲",49,"德鲁伊","C","3孔盔甲","击中5%几率释放15级龙卷风|被击中5%几率释放15级旋风护甲|+2德鲁伊技能|+100-150法力|电抗+30%|魔法减伤7|15%伤害转为法力","1.11","德鲁伊过渡甲。"],
+["圣堂","Sanctuary","Ko Ko Mal","盾牌","任意盾牌",49,"通用","B","3孔高格挡盾牌","+20%恢复速度|+40%格挡率|+130-160%增强防御|+250远程防御|+20敏捷|全抗+50-70|魔法减伤7|12级缓慢飞弹(60次充能)","1.10","抗性最高的通用盾之一。"],
+["毒液","Venom","Tal Dol Mal","武器","任意武器",49,"通用","C","3孔武器","无视目标防御|毒伤213/7秒|毒伤75/5秒|7%偷取法力|阻止怪物回血|25%击中使怪物逃跑|15级毒爆(27次充能)|13级剧毒新星(11次充能)","原版","毒伤不叠加，实战冷门。"],
+["谵妄","Delirium","Lem Ist Io","头盔","头盔",51,"通用","C","3孔头盔","击中11%几率释放18级困惑|被击中14%几率释放13级恐惧|6%几率释放14级心灵爆震|被击中1%几率变身为50级谵妄(无法攻击)|+2全技能|+261防御|+10体力|50%额外金币|25% MF|17级吸引(60次充能)","1.10","+2全技能很香，但随机变身会让你无法操作。"],
+["女巫集会","Coven","Ist Ral Io","头盔","头盔",51,"通用","A","3孔头环/王冠，最好自带+技能","被击中5%几率释放10级印记：倦怠|+1全技能|+20%施法速度|+30-50%增强防御|+10体力|火抗+30%|杀怪回血+1-5|26-40% MF","3.0","资料片新增，施法者中期头盔，兼顾施法速度和 MF。"],
+["弑君者","Kingslayer","Mal Um Gul Fal","武器","剑/斧",53,"通用","B","4孔狂战士斧、巨神之刃","+230-270%增强伤害|+30%攻击速度|-25%目标防御|+20%命中加成|33%压碎性打击|50%撕裂伤口|+1复仇|阻止怪物回血|+10力量|40%额外金币","1.10","压碎+撕裂，打 Boss 的中端武器。"],
+["原则","Principle","Ral Gul Eld","盔甲","盔甲",53,"圣骑士","C","3孔盔甲","击中100%几率释放5级圣光弹|+2圣骑士技能|对不死+50%伤害|+100-150生命|体力消耗-15%|毒抗上限+5%|火抗+30%","1.11","圣骑士过渡甲。"],
+["裂缝","Rift","Hel Ko Lem Gul","武器","长柄/权杖",53,"雇佣兵","B","4孔长柄武器（二幕雇佣兵）","攻击16%几率释放21级冰封球|击中20%几率释放16级龙卷风|+20%命中加成|魔法伤害160-250|火伤60-180|+5-10全属性|+10敏捷|38%伤害转为法力|75%额外金币|15级铁处女(40次充能)|需求-20%","1.10","雇佣兵的元素转换武器，物理免疫也能打。"],
+["马赛克","Mosaic","Mal Gul Amn","武器","爪",53,"刺客","A","3孔爪，最好自带+3武学技能","50%几率终结技不消耗充能|+2武学技能(刺客)|+20%攻击速度|+20%命中加成|7%吸血|+8-15%火系技能伤害|+8-15%电系技能伤害|+8-15%冰系技能伤害|阻止怪物回血|+200-250%增强伤害","2.6","让武学刺客（凤凰击、龙爪等）真正成为一线流派。"],
+["警戒","Vigilance","Dol Gul","盾牌","盾牌、魔典、死灵头颅",53,"通用","B","2孔魔典、死灵头颅、圣骑士盾","被击中5%几率释放10级火焰之环|+10%跑步速度|+30%格挡速度|+75-100%增强防御|+20-40生命|生命恢复+7|+20-40法力|毒抗上限+5%|全抗+25-35","3.0","资料片新增，两颗符文换高抗副手，术士魔典也能用。"],
+["死亡","Death","Hel El Vex Ort Gul","武器","剑/斧",55,"通用","B","5孔无形狂战士斧、巨神之刃","攻击25%几率释放18级冰锥|死亡时100%释放44级连锁闪电|+300-385%增强伤害|+20%命中加成|+50命中|电伤1-50|7%偷取法力|50%压碎性打击|致命一击0.5%/角色等级|22级血石魔(15次充能)|不可破坏|+1光照半径|需求-20%","1.10","压碎和致命一击都很高的中高端近战武器。"],
+["摇曳火焰","Flickering Flame","Nef Pul Vex","头盔","头盔",55,"通用","A","3孔头环（自带+火系或+术士技能）","4-8级抗火光环|+3火系技能|-10-15%敌方火抗|+30%增强防御|+30远程防御|+50-75法力|火抗上限+5%|冻结时间减半|中毒时间-50%","2.4","火系法师、火系术士的性价比头盔，减抗很实用。"],
+["橡树之心","Heart of the Oak","Ko Vex Pul Thul","武器","法杖/钉头锤",55,"通用","S","4孔连枷（单手，可配盾）","+3全技能|+40%施法速度|对恶魔+75%伤害、+100命中|冰伤3-14|7%偷取法力|+10敏捷|生命恢复+20|最大法力+15%|全抗+30-40|4级橡木智者(25次充能)|14级渡鸦(60次充能)","1.10","施法者顶级武器，锤丁、召唤德、法师都爱用。"],
+["沉默","Silence","Dol Eld Hel Ist Tir Vex","武器","任意武器",55,"通用","C","6孔相位剑、水晶剑","+2全技能|+200%增强伤害|+20%攻击速度|+20%恢复速度|对不死+75%伤害、+50命中|11%偷取法力|致盲+33|25%击中使怪物逃跑|全抗+75|杀怪回魔+2|30% MF|需求-20%","原版","全抗+75 很高，但符文成本与收益不成正比。"],
+["战争召唤","Call to Arms","Amn Ral Mal Ist Ohm","武器","任意武器",57,"通用","S","5孔水晶剑、连枷（副手切换用）","+1全技能|+40%攻击速度|+250-290%增强伤害|火伤5-30|7%吸血|+1-6战斗命令(BO)|+2-6战斗指挥|+1-4战斗怒吼|阻止怪物回血|生命恢复+12|30% MF","1.10","全职业的副手切换装，开 BO 加生命和法力上限，配精神盾使用。"],
+["混沌","Chaos","Fal Ohm Um","武器","爪",57,"刺客","B","3孔爪，最好自带+3旋风斩","击中9%几率释放11级冰封球|11%几率释放9级充能弹|+290-340%增强伤害|+35%攻击速度|魔法伤害216-471|25%撕裂伤口|+1旋风斩|+10力量|杀死恶魔+15生命","1.10","旋风刺客核心武器。"],
+["放逐","Exile","Vex Ohm Ist Dol","盾牌","圣骑士盾",57,"圣骑士","A","4孔无形神圣小盾/神圣圆盾（可自修）","击中15%几率释放5级生命偷取|13-16级反抗光环|+2攻击型光环(圣骑士)|+30%格挡速度|冻结目标+1|+220-260%增强防御|生命恢复+7|冰抗上限+5%|火抗上限+5%|25% MF|每25秒修复1点耐久","1.10","惩戒骑打 Uber 的经典盾，生命偷取自动触发。"],
+["仪式","Ritual","Amn Shael Ohm","武器","匕首",57,"术士/刺客","B","3孔精英匕首","被击中13%几率释放1级印记：死亡|+250-320%增强伤害|+40%攻击速度|+200-260%命中加成|对恶魔+150-250%伤害|7%吸血|杀死的怪物安息|杀怪回血+3-5","3.0","资料片新增，近战混合流术士的匕首选择。"],
+["刚毅","Fortitude","El Sol Dol Lo","盔甲/武器","盔甲、武器",59,"通用","S","盔甲：执政官铠甲、无形神圣铠甲（雇佣兵）；武器：雷神之锤等高伤底材","被击中20%几率释放15级冰霜护甲|+25%施法速度|+300%增强伤害|+200%增强防御|生命+1-1.5/角色等级|全抗+25-30|12%伤害转为法力|盔甲：+15防御、减伤7、生命恢复+7、电抗上限+5%|武器：+9最小伤害、+50命中、20%致命一击、25%击中逃跑","1.10","雇佣兵最好的盔甲；玩家近战穿也很强，物理伤害直接+300%。"],
+["悲伤","Grief","Eth Tir Lo Mal Ral","武器","剑/斧",59,"通用","S","5孔相位剑（攻速最快、不掉耐久）或狂战士斧","击中35%几率释放15级毒液|+30-40%攻击速度|伤害+340-400(固定加伤)|无视目标防御|-25%目标防御|对恶魔+1.875%伤害/角色等级|火伤5-30|-20-25%敌方毒抗|20%致命一击|阻止怪物回血|杀怪回血+10-15|杀怪回魔+2","1.10","固定加伤在高攻速武器上收益爆炸，物理近战和雇佣兵的第一选择。"],
+["荆棘","Bramble","Ral Ohm Sur Eth","盔甲","盔甲",61,"通用","B","4孔盔甲（给毒死灵或雇佣兵）","15-21级荆棘光环|+50%恢复速度|+25-50%毒系技能伤害|+300防御|最大法力+5%|法力回复15%|冰抗上限+5%|火抗+30%|毒抗+100%|杀怪回血+13|13级尖刺之灵(33次充能)","1.10","毒系死灵的伤害甲，也可以给雇佣兵挂荆棘。"],
+["龙","Dragon","Sur Lo Sol","盔甲/盾牌","盔甲、任意盾牌",61,"通用","B","3孔执政官铠甲、君主盾","击中12%几率释放15级九头蛇|被击中20%几率释放18级毒液|14级神圣之火光环|+360防御|+230远程防御|+3-5全属性|力量+0.375/角色等级|盔甲：最大法力+5%、电抗上限+5%、减伤7|盾牌：+50法力、电抗上限+5%、减伤7","1.10","力量加成能省下大量属性点，双龙流很受欢迎。"],
+["风","Wind","Sur El","武器","近战武器",61,"通用","C","2孔相位剑","击中10%几率释放9级龙卷风|+120-160%增强伤害|+20%跑步速度|+40%攻击速度|+15%恢复速度|-50%目标防御|+50命中|致盲+1|13级龙卷风(127次充能)|+1光照半径","1.10","攻速和跑速不错，伤害偏低。"],
+["野兽","Beast","Ber Tir Um Mal Lum","武器","斧/权杖/战锤",63,"德鲁伊","A","5孔狂战士斧、传奇木槌","9级狂热光环|+40%攻击速度|+240-270%增强伤害|20%压碎性打击|25%撕裂伤口|+3熊人|+3狼化|阻止怪物回血|+25-40力量|+10精力|杀怪回魔+2|13级召唤灰熊(5次充能)","1.10","狂热光环+强制变熊，熊德和狂怒德的核心。"],
+["荣耀之链","Chains of Honor","Dol Um Ber Ist","盔甲","盔甲",63,"通用","S","4孔执政官铠甲、暗影斗篷、法师铠甲","+2全技能|+35%跑步速度|+70%增强防御|对恶魔+200%伤害|对不死+100%伤害|8%吸血|+20力量|生命恢复+7|全抗+65|物理减伤8%|25% MF","1.10","不需要传送的职业首选盔甲，抗性和减伤都顶。"],
+["永恒","Eternity","Amn Ber Ist Sol Sur","武器","近战武器",63,"通用","C","5孔巨神之刃","+260-310%增强伤害|+9最小伤害|7%吸血|20%压碎性打击|致盲+10|减速目标33%|法力回复16%|生命恢复+16|免疫冻结|30% MF|不可破坏|8级复活(88次充能)","1.10","符文成本高，收益一般。"],
+["无限","Infinity","Ber Mal Ber Ist","武器","长柄/长矛",63,"雇佣兵","S","无形巨神之镰、无形秘法斧、无形长柄镰刀","击杀50%几率释放20级连锁闪电|12级信念光环|+35%跑步速度|+255-325%增强伤害|-45-55%敌方电抗|40%压碎性打击|对不死+35%伤害|阻止怪物回血|+0.5体力/角色等级|30% MF|21级旋风护甲(30次充能)","1.10","信念光环大幅降低敌人抗性，是电系、元素流破免疫的关键，装在二幕雇佣兵身上。"],
+["愤怒","Wrath","Pul Lum Ber Mal","武器","远程武器",63,"亚马逊","C","4孔弓","击中30%几率释放1级衰老|5%几率释放10级生命偷取|对恶魔+375%伤害|对不死+250-300%伤害|魔法伤害85-120|电伤41-240|20%压碎性打击|阻止怪物回血|+10精力|免疫冻结","1.10","衰老触发不错，但整体偏冷门。"],
+["谜团","Enigma","Jah Ith Ber","盔甲","盔甲",65,"通用","S","3孔法师铠甲（力量需求低）、暗影斗篷、执政官铠甲（追求防御）","+2全技能|+45%跑步速度|+1传送|+750-775防御|力量+0.75/角色等级|最大生命+5%|物理减伤8%|杀怪回血+14|15%伤害转为法力|MF+1%/角色等级","1.10","让所有职业都能传送，是改变玩法的头号符文之语。"],
+["烙印","Brand","Jah Lo Mal Gul","武器","远程武器",65,"亚马逊","B","4孔九头蛇弓、大祭司弓","被击中35%几率释放14级伤害扩散|击中100%几率释放18级骨矛|发射爆裂箭矢(15级)|+260-340%增强伤害|无视目标防御|+20%命中加成|对恶魔+280-330%伤害|20%致命一击|阻止怪物回血|击退","1.10","骨矛和爆裂箭提供额外魔法伤害。"],
+["毁灭","Destruction","Vex Lo Ber Jah Ko","武器","长柄/剑",65,"通用","B","5孔巨神之刃、巨神之镰","击中23%几率释放12级火山|5%几率释放23级熔岩巨石|攻击15%几率释放22级新星|死亡时100%释放45级陨石|+350%增强伤害|无视目标防御|魔法伤害100-180|7%偷取法力|20%压碎性打击|20%致命一击|阻止怪物回血|+10敏捷","1.10","特效华丽，实用性一般。"],
+["梦境","Dream","Io Jah Pul","头盔/盾牌","头盔、任意盾牌",65,"圣骑士","A","头盔：骨面盔；盾牌：3孔带抗性的圣骑士盾","被击中10%几率释放15级困惑|15级神圣冲击光环|+20-30%恢复速度|+30%增强防御|+150-220防御|+10体力|最大生命+5%|法力+0.625/角色等级|全抗+5-20|12-25% MF|头盔版额外+50生命","1.10","头盔+盾牌各做一件，神圣冲击叠加，是惩戒骑和狂热骑的主要电伤来源。"],
+["信仰","Faith","Ohm Jah Lem Eld","武器","远程武器",65,"亚马逊/雇佣兵","A","4孔大祭司弓、九头蛇弓","12-15级狂热光环|+1-2全技能|+330%增强伤害|无视目标防御|+300%命中加成|对不死+75%伤害|火伤120|全抗+15|10%几率使击杀目标复活为盟友|75%额外金币","1.10","弓马毕业弓之一；给一幕罗格雇佣兵装上，全队吃狂热光环。"],
+["饥荒","Famine","Fal Ohm Ist Jah","武器","斧/战锤",65,"通用","B","4孔无形狂战士斧","+320-370%增强伤害|+30%攻击速度|无视目标防御|魔法伤害180-200|火伤50-200|电伤51-250|冰伤50-200|12%吸血|阻止怪物回血|+10力量","1.10","元素伤害高，能应付物理免疫。"],
+["狂怒","Fury","Jah Gul Eth","武器","近战武器",65,"野蛮人","B","3孔相位剑、狂战士斧","+209%增强伤害|+40%攻击速度|无视目标防御|-25%目标防御|+20%命中加成|6%吸血|33%致命一击|66%撕裂伤口|+5狂乱(野蛮人)|阻止怪物回血","1.10","狂乱野蛮人的备选武器。"],
+["冰冻","Ice","Amn Shael Jah Lo","武器","远程武器",65,"亚马逊","B","4孔九头蛇弓、大祭司弓","升级时100%释放40级暴风雪|击中25%几率释放22级冰霜新星|18级神圣冰冻光环|+140-210%增强伤害|无视目标防御|+20%攻击速度|+25-30%冰系技能伤害|-20%敌方冰抗|7%吸血|20%致命一击|额外金币+3.125%/角色等级","1.10","冰箭弓马专用，神圣冰冻还能减速全场。"],
+["最后的愿望","Last Wish","Jah Mal Jah Sur Jah Ber","武器","剑/战锤/斧",65,"通用","A","6孔相位剑、狂战士斧","被击中6%几率释放11级隐退|攻击10%几率释放18级生命偷取|击中20%几率释放20级充能弹|17级力量光环|+330-375%增强伤害|无视目标防御|60-70%压碎性打击|阻止怪物回血|致盲目标|MF+0.5%/角色等级","1.10","三颗乔符文的豪华武器，压碎性打击极高，打 Uber 很好用。"],
+["凤凰","Phoenix","Vex Vex Lo Jah","武器/盾牌","武器、任意盾牌",65,"通用","A","盾牌：君主盾、圣骑士盾；武器：狂战士斧等高伤底材","升级时100%释放40级烈焰|击中40%几率释放22级火焰风暴|10-15级救赎光环|+350-400%增强伤害|-28%敌方火抗|+350-400远程防御|吸收火伤15-21|盾牌版：+50生命、火抗上限+10%、电抗上限+5%","1.10","火焰吸收 + 救赎光环，打 Uber 和火系流派的强力盾。"],
+["末日","Doom","Hel Ohm Um Lo Cham","武器","斧/长柄/战锤",67,"雇佣兵","A","5孔无形巨神之镰、秘法斧","击中5%几率释放18级火山|12级神圣冰冻光环|+2全技能|+45%攻击速度|+330-370%增强伤害|-40-60%敌方冰抗|20%致命一击|25%撕裂伤口|阻止怪物回血|冻结目标+3|需求-20%","1.10","冰系玩家给雇佣兵破冰抗，神圣冰冻还能全场减速。"],
+["正义之手","Hand of Justice","Sur Cham Amn Lo","武器","任意武器",67,"通用","B","4孔相位剑、狂战士斧","升级时100%释放36级烈焰|死亡时100%释放48级陨石|16级神圣之火光环|+280-330%增强伤害|+33%攻击速度|无视目标防御|7%吸血|-20%敌方火抗|20%致命一击|致盲目标|冻结目标+3","1.10","火系近战可用，符文成本偏高。"],
+["骄傲","Pride","Cham Sur Io Lo","武器","长柄/长矛",67,"雇佣兵","A","5孔无形巨神之镰（二幕雇佣兵）","被击中25%几率释放17级火墙|16-20级专注光环|+260-300%命中加成|对恶魔伤害+1%/角色等级|电伤50-280|20%致命一击|致盲目标|冻结目标+3|+10体力|生命恢复+8|额外金币+1.875%/角色等级","1.10","专注光环给物理流玩家大幅加伤，是无限之外的另一条雇佣兵路线。"],
+["瘟疫","Plague","Cham Shael Um","武器","剑/爪/匕首",67,"刺客","A","3孔爪、相位剑","被击中20%几率释放12级降低抗性|击中25%几率释放15级剧毒新星|13-17级净化光环|+1-2全技能|+220-320%增强伤害|+20%攻击速度|-23%敌方毒抗|致命一击0.3%/角色等级|25%撕裂伤口|冻结目标+3","2.4","降低抗性触发很实用，净化光环解诅咒。"],
+["迷雾","Mist","Cham Shael Gul Thul Ith","武器","远程武器",67,"亚马逊/雇佣兵","A","5孔九头蛇弓、大祭司弓","8-12级专注光环|+3全技能|+20%攻击速度|+100%穿透攻击|+325-375%增强伤害|+9最大伤害|+20%命中加成|冰伤3-14|冻结目标+3|+24体力|全抗+40","2.4","弓马毕业弓之一，专注光环连雇佣兵和队友都能吃到。"],
+["变形","Metamorphosis","Io Cham Fal","头盔","头盔",67,"德鲁伊","A","3孔德鲁伊毛皮（自带+变形技能）","+5变形技能(德鲁伊)|击中时施放狼印/熊印|25%压碎性打击|+10力量|+10体力|+50-80%增强防御|全抗+10|免疫冻结","2.6","变形德鲁伊的专属头盔，+5变形技能非常可观。"],
+["死亡之息","Breath of the Dying","Vex Hel El Eld Zod Eth","武器","任意武器",69,"通用","S","6孔无形狂战士斧、无形巨神之刃","击杀50%几率释放20级剧毒新星|+350-400%增强伤害|+60%攻击速度|-25%目标防御|+50命中|对不死+200%伤害、+50命中|12-15%吸血|7%偷取法力|阻止怪物回血|+30全属性|不可破坏|+1光照半径|需求-20%","1.10","近战物理天花板之一，需要萨德符文，自带不可破坏所以配无形底材最优。"],
+["执念","Obsession","Zod Ist Lem Lum Io Nef","武器","法杖",69,"通用","A","6孔执政官法杖、长老法杖（自带+技能）","被击中24%几率释放10级衰弱|+4全技能|+65%施法速度|+60%恢复速度|+10体力|+10精力|最大生命+15-25%|全抗+60-70|75%额外金币|30% MF|击退|不可破坏","2.4","施法者最高的+4全技能和65%施法，缺点是双手法杖不能配盾。"],
+["虚空","Void","Thul Zod Ist","武器","匕首",69,"通用","A","3孔精英匕首（如传奇尖刺，可带咒术技能）","+2全技能|+40%施法速度|+10-15%魔法技能伤害|+1-3深渊|+8-12全属性|4级衰老(35次充能)|冰伤3-14|30% MF|不可破坏","3.0","资料片的明星施法武器，单手可配精神或凤凰；等级需求按萨德推算为 69。"]
+];
+
+const SLOTS=["全部","武器","盔甲","盾牌","头盔"];
+const TIERS=["全部","S","A","B","C"];
+const TORDER={S:0,A:1,B:2,C:3};
+let st={q:"",slot:"全部",tier:"全部",cls:"",sort:"lvl"};
+
+function runeChips(s){return s.split(" ").map(r=>`<span title="${r}">${RN[r].cn} ${r}<i>#${RN[r].n}</i></span>`).join("")}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+
+function render(){
+  const q=st.q.trim().toLowerCase();
+  let list=D.filter(d=>{
+    if(st.slot!=="全部" && !d[3].includes(st.slot)) return false;
+    if(st.tier!=="全部" && d[7]!==st.tier) return false;
+    if(st.cls && d[6]!==st.cls) return false;
+    if(q){
+      const runesCn=d[2].split(" ").map(r=>RN[r].cn).join(" ");
+      const hay=(d[0]+" "+d[1]+" "+d[2]+" "+runesCn+" "+d[4]+" "+d[8]+" "+d[9]+" "+d[11]).toLowerCase();
+      if(!hay.includes(q)) return false;
+    }
+    return true;
+  });
+  list.sort((a,b)=>{
+    if(st.sort==="tier") return TORDER[a[7]]-TORDER[b[7]]||a[5]-b[5];
+    if(st.sort==="sock") return a[2].split(" ").length-b[2].split(" ").length||a[5]-b[5];
+    return a[5]-b[5]||TORDER[a[7]]-TORDER[b[7]];
+  });
+  document.getElementById("count").textContent=`共 ${list.length} / ${D.length} 个`;
+  const box=document.getElementById("rows");
+  if(!list.length){box.innerHTML='<div class="empty">没有符合条件的符文之语。换个关键词，或把部位、评级调回「全部」。</div>';return}
+  box.innerHTML=list.map((d,i)=>{
+    const n=d[2].split(" ").length, id="d"+i;
+    const fx=d[9].split("|").map(esc).join("<br>");
+    return `<div class="row" tabindex="0" role="button" aria-expanded="false" aria-controls="${id}">
+      <div class="nm"><b>${esc(d[0])}</b><small>${esc(d[1])}</small><span class="ver">${d[10]}</span></div>
+      <div class="rn">${runeChips(d[2])}</div>
+      <div class="soc">${n}</div>
+      <div class="base">${esc(d[4])}</div>
+      <div class="lv">${d[5]}</div>
+      <div class="cls">${esc(d[6])}</div>
+      <div class="tier t-${d[7]}">${d[7]}</div>
+      <div class="meta">${n}孔 ${esc(d[4])} ｜ ${d[5]}级 ｜ ${esc(d[6])}</div>
+    </div>
+    <div class="detail" id="${id}">
+      <div class="tooltip">
+        <div class="t1">${esc(d[0])} ${esc(d[1])}</div>
+        <div class="t2">${esc(d[8])}</div>
+        <div class="t3">'${d[2].split(" ").join("")}'</div>
+        <div class="req">需要等级：${d[5]}</div>
+        ${fx}
+        <div class="t2" style="margin-top:6px">镶孔 (${n})</div>
+      </div>
+      <div class="info"><dl>
+        <dt>符文顺序</dt><dd>${d[2].split(" ").map(r=>`${RN[r].cn}(${r}, ${RN[r].n}号)`).join(" → ")}</dd>
+        <dt>可用底材</dt><dd>${n} 孔 ${esc(d[4])}</dd>
+        <dt>最佳底材</dt><dd>${esc(d[8])}</dd>
+        <dt>穿戴等级</dt><dd>${d[5]}</dd>
+        <dt>适合谁</dt><dd>${esc(d[6])}</dd>
+        <dt>评级</dt><dd><b class="t-${d[7]}">${d[7]}</b>　${esc(d[11])}</dd>
+        <dt>版本</dt><dd>${d[10]}</dd>
+      </dl></div>
+    </div>`;
+  }).join("");
+}
+
+document.getElementById("rows").addEventListener("click",e=>{
+  const r=e.target.closest(".row"); if(!r) return; toggle(r);
+});
+document.getElementById("rows").addEventListener("keydown",e=>{
+  const r=e.target.closest(".row"); if(r && (e.key==="Enter"||e.key===" ")){e.preventDefault();toggle(r)}
+});
+function toggle(r){const d=document.getElementById(r.getAttribute("aria-controls"));const o=d.classList.toggle("open");r.setAttribute("aria-expanded",o)}
+
+function chips(elId,arr,key){
+  const el=document.getElementById(elId);
+  arr.forEach(v=>{
+    const b=document.createElement("button");b.className="chip";b.type="button";b.textContent=v;
+    b.setAttribute("aria-pressed",st[key]===v);
+    b.onclick=()=>{st[key]=v;el.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c.textContent===v));render()};
+    el.insertBefore(b,el.querySelector(".count"));
+  });
+}
+chips("slotChips",SLOTS,"slot");chips("tierChips",TIERS,"tier");
+document.getElementById("q").addEventListener("input",e=>{st.q=e.target.value;render()});
+document.getElementById("cls").addEventListener("change",e=>{st.cls=e.target.value;render()});
+document.getElementById("sort").addEventListener("change",e=>{st.sort=e.target.value;render()});
+
+document.getElementById("heroRunes").innerHTML=RUNES.map((r,i)=>`<span>${i+1} ${r[1]}</span>`).join("");
+document.getElementById("runeRows").innerHTML=RUNES.map((r,i)=>`<tr><td>${i+1}</td><td>${r[1]}</td><td>${r[0]}</td><td>${RUNE_USE[r[0]]}</td></tr>`).join("");
+
+
+const GEMS=["碎裂托帕石","碎裂紫水晶","碎裂蓝宝石","碎裂红宝石","碎裂绿宝石","碎裂钻石","瑕疵托帕石","瑕疵紫水晶","瑕疵蓝宝石","瑕疵红宝石","瑕疵绿宝石","瑕疵钻石","普通托帕石","普通紫水晶","普通蓝宝石","普通红宝石","普通绿宝石","普通钻石","无瑕托帕石","无瑕紫水晶","无瑕蓝宝石","无瑕红宝石","无瑕绿宝石"];
+const upBody=RUNES.slice(0,32).map((r,i)=>{
+  const to=RUNES[i+1], n=i<9?3:(i<20?3:2), gem=i<9?"":GEMS[i-9];
+  return `<tr><td>${i+1} → ${i+2}</td><td>${n} 颗 ${r[1]}（${r[0]}）${gem?" + "+gem:""}</td><td>${to[1]}（${to[0]}）</td></tr>`;
+}).join("");
+const upEl=document.getElementById("upRows"); if(upEl) upEl.innerHTML=upBody;
+
+document.querySelectorAll("nav.tabs button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("nav.tabs button").forEach(x=>x.setAttribute("aria-selected",x===b));
+  ["rw","runes","cube","notes"].forEach(t=>document.getElementById("tab-"+t).hidden=(t!==b.dataset.tab));
+});
+
+document.getElementById("themeBtn").onclick=()=>{
+  const cur=document.documentElement.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");
+  const next=cur==="light"?"dark":"light";
+  document.documentElement.setAttribute("data-theme",next);
+  try{localStorage.setItem("rw-theme",next)}catch(e){}
+};
+try{const t=localStorage.getItem("rw-theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}
+
+render();
+</script>
+</body>
+</html>
