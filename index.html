@@ -115,6 +115,7 @@ section[hidden]{display:none}
   <button role="tab" aria-selected="true" data-tab="rw">符文之语</button>
   <button role="tab" aria-selected="false" data-tab="runes">33 颗符文</button>
   <button role="tab" aria-selected="false" data-tab="cube">赫拉迪克方块</button>
+  <button role="tab" aria-selected="false" data-tab="base">底材</button>
   <button role="tab" aria-selected="false" data-tab="book">配方书</button>
   <button role="tab" aria-selected="false" data-tab="notes">评级与制作规则</button>
 </nav>
@@ -390,6 +391,45 @@ section[hidden]{display:none}
 </section>
 
 
+
+<section id="tab-base" hidden>
+  <div class="filters">
+    <div class="frow">
+      <input type="search" id="zq" placeholder="搜索底材，如：君主盾 / Monarch / 相位剑 / Archon">
+      <select id="zsub" aria-label="按部位筛选"></select>
+      <span class="count" id="zcount"></span>
+    </div>
+    <div class="frow" id="zcats"><span class="lab">大类</span></div>
+  </div>
+  <div class="scroll">
+    <table class="runes-table">
+      <thead><tr><th style="width:6.5em">部位</th><th>普通 Normal</th><th>精良 Exceptional</th><th>精英 Elite</th><th style="width:7em">精英需求</th><th style="width:3.5em">最大孔</th></tr></thead>
+      <tbody id="baseRows"></tbody>
+    </table>
+  </div>
+  <p class="notes" id="zempty" style="display:none">没有匹配的底材。</p>
+
+  <h2 class="ch">三档是怎么回事</h2>
+  <ul class="notes">
+    <li>每件装备都属于某个<b>底材系列</b>，一个系列有普通、精良、精英三档。同一系列内换档，基础伤害或防御明显提升，代价是力量、敏捷和等级需求跟着涨。</li>
+    <li>精良档从噩梦难度开始掉，精英档从地狱难度开始掉。普通难度只出普通档。</li>
+    <li><b>换系列就不是同一件东西了</b>。灰幕寿衣和执政官铠甲都是精英轻甲，但一个属棉甲系、一个属轻型板甲系，制作装备的配方只认系列，不认「看着差不多」。</li>
+    <li>孔数上限由底材和难度共同决定，表里给的是地狱难度能达到的最大值。想拿满孔用第五幕拉苏克的任务奖励。</li>
+    <li>需求那列给的是<b>精英档</b>的数值，因为做符文之语时最常卡在这里。标「—」的是没有需求或来源未标注。</li>
+  </ul>
+
+  <h2 class="ch">升级底材的配方</h2>
+  <p class="notes">暗金、套装、稀有装备可以在方块里升一档，<b>只换底材，词缀不变</b>。白装没有升级配方（也不需要，直接找对应档位的白装即可）。</p>
+  <div class="scroll"><table class="runes-table"><thead><tr><th style="width:7em">类型</th><th>普通 → 精良</th><th>精良 → 精英</th></tr></thead><tbody id="zupRows"></tbody></table></div>
+  <ul class="notes">
+    <li><b>不可逆</b>，而且升完需求会涨，动手前确认自己穿得上、戴得起。</li>
+    <li>升级<b>不会</b>把普通暗金变成同名的精英暗金——它换的是底材档位，装备本身的词缀原样保留。</li>
+    <li>无形装备可以升，升完仍是无形；已镶的符文、宝石、珠宝留在孔里。</li>
+    <li>值得升的是那些词缀按百分比吃底材的：给雇佣兵的无形防具、以增强防御或增强伤害为主的暗金。固定数值的词缀升了没收益。</li>
+  </ul>
+  <p class="notes">数据以英文名为准——中文译名各版本、各资料站不统一，游戏里对着英文认最稳。精英档的中文名我按常见叫法标注，个别可能和你游戏里显示的不同。</p>
+</section>
+
 <section id="tab-book" hidden>
   <div class="filters">
     <div class="frow">
@@ -644,7 +684,7 @@ const upEl=document.getElementById("upRows"); if(upEl) upEl.innerHTML=upBody;
 
 document.querySelectorAll("nav.tabs button").forEach(b=>b.onclick=()=>{
   document.querySelectorAll("nav.tabs button").forEach(x=>x.setAttribute("aria-selected",x===b));
-  ["rw","runes","cube","book","notes"].forEach(t=>document.getElementById("tab-"+t).hidden=(t!==b.dataset.tab));
+  ["rw","runes","cube","base","book","notes"].forEach(t=>document.getElementById("tab-"+t).hidden=(t!==b.dataset.tab));
 });
 
 
@@ -772,6 +812,52 @@ function brender(){
 })();
 document.getElementById("bq").addEventListener("input",e=>{bst.q=e.target.value;brender()});
 brender();
+
+
+/* ===== 底材 ===== */
+const BASES=[["防具", "铠甲", "Quilted Armor 棉甲", "Ghost Armor 幽灵铠甲", "Dusk Shroud 灰幕寿衣", "力 77", "4"], ["防具", "铠甲", "Leather Armor 皮甲", "Serpentskin Armor 蛇皮铠甲", "Wyrmhide 龙皮铠甲", "力 84", "4"], ["防具", "铠甲", "Hard Leather Armor 硬皮甲", "Demonhide Armor 魔皮铠甲", "Scarab Husk 圣甲虫壳", "力 95", "4"], ["防具", "铠甲", "Studded Leather 缀钉皮甲", "Trellised Armor 格状铠甲", "Wire Fleece 铁丝羊毛", "力 111", "4"], ["防具", "铠甲", "Breast Plate 胸甲", "Cuirass 胸铠", "Great Hauberk 巨型锁甲", "力 118", "4"], ["防具", "铠甲", "Ring Mail 环甲", "Linked Mail 连环甲", "Diamond Mail 钻石甲", "力 131", "4"], ["防具", "铠甲", "Scale Mail 鳞甲", "Tigulated Mail 瓦片甲", "Loricated Mail 罗列甲", "力 149", "4"], ["防具", "铠甲", "Chain Mail 链甲", "Mesh Armor 网甲", "Boneweave 骨织甲", "力 158", "4"], ["防具", "铠甲", "Splint Mail 片甲", "Russet Armor 赤褐铠甲", "Balrog Skin 炎魔皮", "力 165", "4"], ["防具", "铠甲", "Light Plate 轻型板甲", "Mage Plate 法师铠甲", "Archon Plate 执政官铠甲", "力 103", "4"], ["防具", "铠甲", "Field Plate 战地板甲", "Sharktooth Armor 鲨齿铠甲", "Kraken Shell 海怪壳", "力 174", "4"], ["防具", "铠甲", "Plate Mail 板甲", "Templar Coat 圣堂武士外衣", "Hellforge Plate 地狱熔炉铠甲", "力 196", "4"], ["防具", "铠甲", "Gothic Plate 哥特板甲", "Embossed Plate 浮雕铠甲", "Lacquered Plate 漆器铠甲", "力 208", "4"], ["防具", "铠甲", "Full Plate Mail 全身板甲", "Chaos Armor 混乱铠甲", "Shadow Plate 暗影板甲", "力 230", "4"], ["防具", "铠甲", "Ancient Armor 远古铠甲", "Ornate Plate 华丽铠甲", "Sacred Armor 神圣铠甲", "力 232", "4"], ["防具", "头盔", "Cap 帽子", "War Hat 战帽", "Shako 妖异大浅盔", "力 50", "2"], ["防具", "头盔", "Skull Cap 头骨帽", "Sallet 轻盔", "Hydraskull 九头蛇颅盔", "力 84", "2"], ["防具", "头盔", "Helm 头盔", "Casque 兜盔", "Armet 覆颊盔", "力 109", "2"], ["防具", "头盔", "Mask 面具", "Death Mask 死亡面具", "Demonhead 恶魔头骨", "力 102", "3"], ["防具", "头盔", "Bone Helm 骨盔", "Grim Helm 阴森头盔", "Bone Visage 骨质面甲", "力 106", "3"], ["防具", "头盔", "Full Helm 全罩盔", "Basinet 轻罩盔", "Giant Conch 巨螺盔", "力 142", "2"], ["防具", "头盔", "Great Helm 巨盔", "Winged Helm 翼盔", "Spired Helm 尖顶盔", "力 192", "3"], ["防具", "头盔", "Crown 王冠", "Grand Crown 庄严王冠", "Corona 日冕之冠", "力 174", "3"], ["防具", "盾牌", "Buckler 小圆盾", "Defender 防卫盾", "Heater 加热盾", "力 77", "—"], ["防具", "盾牌", "Small Shield 小型盾", "Round Shield 圆型盾", "Luna 圆月盾", "力 100", "—"], ["防具", "盾牌", "Large Shield 大盾", "Scutum 方形盾", "Hyperion 海伯利安盾", "力 127", "—"], ["防具", "盾牌", "Kite Shield 鸢盾", "Dragon Shield 龙盾", "Monarch 君主盾", "力 156", "4"], ["防具", "盾牌", "Spiked Shield 尖刺盾", "Barbed Shield 倒刺盾", "Blade Barrier 刀刃刺盾", "力 118", "—"], ["防具", "盾牌", "Bone Shield 骨盾", "Grim Shield 阴森之盾", "Troll Nest 巨魔巢穴", "力 106", "—"], ["防具", "盾牌", "Tower Shield 塔盾", "Pavise 大型塔盾", "Aegis 神盾", "力 219", "—"], ["防具", "盾牌", "Gothic Shield 哥德盾", "Ancient Shield 上古盾", "Ward 庇护盾", "力 185", "—"], ["防具", "手套", "Leather Gloves 皮手套", "Demonhide Gloves 魔皮手套", "Bramble Mitts 荆棘手套", "—", "—"], ["防具", "手套", "Heavy Gloves 重手套", "Sharkskin Gloves 鲨皮手套", "Vampirebone Gloves 吸血鬼骨手套", "—", "—"], ["防具", "手套", "Chain Gloves 链甲手套", "Heavy Bracers 重护腕", "Vambraces 臂铠", "—", "—"], ["防具", "手套", "Light Gauntlets 轻型钢手", "Battle Gauntlets 战斗钢手", "Crusader Gauntlets 十字军钢手", "—", "—"], ["防具", "手套", "Gauntlets 钢手", "War Gauntlets 战争钢手", "Ogre Gauntlets 食人魔钢手", "—", "—"], ["防具", "腰带", "Sash 布腰带", "Demonhide Sash 魔皮腰带", "Spiderweb Sash 蛛网腰带", "16 格", "—"], ["防具", "腰带", "Light Belt 轻腰带", "Sharkskin Belt 鲨皮腰带", "Vampirefang Belt 吸血鬼牙腰带", "16 格", "—"], ["防具", "腰带", "Belt 腰带", "Mesh Belt 网状腰带", "Mithril Coil 秘银腰带", "16 格", "—"], ["防具", "腰带", "Heavy Belt 重腰带", "Battle Belt 战斗腰带", "Troll Belt 巨魔腰带", "16 格", "—"], ["防具", "腰带", "Plated Belt 板甲腰带", "War Belt 战争腰带", "Colossus Girdle 巨人腰带", "16 格", "—"], ["防具", "鞋子", "Boots 鞋", "Demonhide Boots 魔皮靴", "Wyrmhide Boots 龙皮靴", "—", "—"], ["防具", "鞋子", "Heavy Boots 重靴", "Sharkskin Boots 鲨皮靴", "Scarabshell Boots 甲虫壳靴", "—", "—"], ["防具", "鞋子", "Chain Boots 链甲靴", "Mesh Boots 网状靴", "Boneweave Boots 骨织靴", "—", "—"], ["防具", "鞋子", "Light Plated Boots 轻型板甲靴", "Battle Boots 战斗靴", "Mirrored Boots 镜面靴", "—", "—"], ["防具", "鞋子", "Greaves 胫甲", "War Boots 战争靴", "Myrmidon Greaves 迈密顿胫甲", "—", "—"], ["职业专属", "野蛮人头盔", "Jawbone Cap 颚骨帽", "Jawbone Visor 颚骨面甲", "Carnage Helm 屠杀头盔", "力 —", "3"], ["职业专属", "野蛮人头盔", "Fanged Helm 尖牙头盔", "Lion Helm 狮牙头盔", "Fury Visor 暴怒面甲", "力 —", "3"], ["职业专属", "野蛮人头盔", "Horned Helm 尖角头盔", "Rage Mask 狂怒面具", "Destroyer Helm 毁灭者头盔", "力 —", "3"], ["职业专属", "野蛮人头盔", "Assault Helmet 突击头盔", "Savage Helmet 凶蛮头盔", "Conqueror Crown 征服者盔冠", "力 —", "3"], ["职业专属", "野蛮人头盔", "Avenger Guard 复仇者护盔", "Slayer Guard 杀手护盔", "Guardian Crown 守护者盔冠", "力 —", "3"], ["职业专属", "德鲁伊毛皮", "Wolf Head 狼头兽帽", "Alpha Helm 猛狼头盔", "Blood Spirit 血系灵兽帽", "力 —", "3"], ["职业专属", "德鲁伊毛皮", "Hawk Helm 飞鹰头盔", "Griffon Headdress 狮鹫兽头饰", "Sun Spirit 日阳灵兽帽", "力 —", "3"], ["职业专属", "德鲁伊毛皮", "Antlers 巨角兽帽", "Hunter's Guise 猎人面罩", "Earth Spirit 地土灵兽帽", "力 —", "3"], ["职业专属", "德鲁伊毛皮", "Falcon Mask 猎鹰面具", "Sacred Feathers 圣羽头饰", "Sky Spirit 天翔灵兽帽", "力 —", "3"], ["职业专属", "德鲁伊毛皮", "Spirit Mask 灵狼面具", "Totemic Mask 图腾面具", "Dream Spirit 幽梦灵兽帽", "力 —", "3"], ["职业专属", "死灵头颅", "Preserved Head 保存的头颅", "Mummified Trophy 木乃伊战利品", "Minion Skull 仆役头骨", "力 44", "2"], ["职业专属", "死灵头颅", "Zombie Head 僵尸头颅", "Fetish Trophy 物恋战利品", "Hellspawn Skull 地狱孽种头骨", "力 50", "2"], ["职业专属", "死灵头颅", "Unraveller Head 解咒者头颅", "Sexton Trophy 教堂司事战利品", "Overseer Skull 监工头骨", "力 49", "2"], ["职业专属", "死灵头颅", "Gargoyle Head 石像鬼头颅", "Cantor Trophy 唱诗者战利品", "Succubus Skull 魅魔头骨", "力 60", "2"], ["职业专属", "死灵头颅", "Demon Head 恶魔头颅", "Heirophant Trophy 主祭战利品", "Bloodlord Skull 血领主头骨", "力 65", "2"], ["职业专属", "圣骑士盾", "Targe 小盾", "Akaran Targe 阿卡拉圆盾", "Sacred Targe 神圣小盾", "力 86", "4"], ["职业专属", "圣骑士盾", "Rondache 轻圆盾", "Akaran Rondache 阿卡拉轻圆盾", "Sacred Rondache 神圣轻圆盾", "力 109", "4"], ["职业专属", "圣骑士盾", "Heraldic Shield 纹章盾", "Protector Shield 守护之盾", "Kurast Shield 库拉斯特盾", "力 124", "4"], ["职业专属", "圣骑士盾", "Aerin Shield 艾文之盾", "Gilded Shield 金纹盾", "Zakarum Shield 撒卡兰姆盾", "力 142", "4"], ["职业专属", "圣骑士盾", "Crown Shield 冠冕之盾", "Royal Shield 皇家盾", "Vortex Shield 涡旋盾", "力 148", "4"], ["职业专属", "法师法球", "Eagle Orb 鹰眼法球", "Glowing Orb 光耀法球", "Heavenly Stone 天界之石", "等 44", "2"], ["职业专属", "法师法球", "Sacred Globe 神圣法球", "Crystalline Globe 水晶法球", "Eldritch Orb 鬼怪法球", "等 50", "2"], ["职业专属", "法师法球", "Smoked Sphere 烟雾法球", "Cloudy Sphere 云雾法球", "Demon Heart 恶魔之心", "等 56", "2"], ["职业专属", "法师法球", "Clasped Orb 束紧法球", "Sparkling Ball 闪耀之球", "Vortex Orb 涡旋法球", "等 63", "2"], ["职业专属", "法师法球", "Jared's Stone 杰瑞之石", "Swirling Crystal 旋涌水晶", "Dimensional Shard 次元碎片", "等 66", "3"], ["职业专属", "刺客爪", "Katar 拳刃", "Quhab 库哈伯", "Suwayyah 苏瓦亚", "力/敏 99/99", "3"], ["职业专属", "刺客爪", "Wrist Blade 腕刃", "Wrist Spike 腕刺", "Wrist Sword 腕剑", "力/敏 105/105", "3"], ["职业专属", "刺客爪", "Hatchet Hands 手斧爪", "Fascia 筋膜爪", "War Fist 战拳", "力/敏 108/108", "2"], ["职业专属", "刺客爪", "Cestus 拳套", "Hand Scythe 手镰", "Battle Cestus 战斗拳套", "力/敏 110/110", "2"], ["职业专属", "刺客爪", "Claws 利爪", "Greater Claws 强化利爪", "Feral Claws 野性利爪", "力/敏 113/113", "3"], ["职业专属", "刺客爪", "Blade Talons 刀刃爪", "Greater Talons 强化刀刃爪", "Runic Talons 符文爪", "力/敏 115/115", "3"], ["职业专属", "刺客爪", "Scissors Katar 剪式拳刃", "Scissors Quhab 剪式库哈伯", "Scissors Suwayyah 剪式苏瓦亚", "力/敏 118/118", "3"], ["职业专属", "亚马逊弓", "Stag Bow 牡鹿弓", "Ashwood Bow 灰木弓", "Matriarchal Bow 女族长弓", "力/敏 87/187", "5"], ["职业专属", "亚马逊弓", "Reflex Bow 反射弓", "Ceremonial Bow 典礼之弓", "Grand Matron Bow 大主母弓", "力/敏 108/152", "5"], ["职业专属", "亚马逊矛", "Maiden Spear 少女之矛", "Ceremonial Spear 典礼之矛", "Matriarchal Spear 女族长矛", "力/敏 114/142", "6"], ["职业专属", "亚马逊矛", "Maiden Pike 少女长枪", "Ceremonial Pike 典礼长枪", "Matriarchal Pike 女族长枪", "力/敏 132/149", "6"], ["职业专属", "亚马逊标枪", "Maiden Javelin 少女标枪", "Ceremonial Javelin 典礼标枪", "Matriarchal Javelin 女族长标枪", "力/敏 107/151", "6"], ["武器", "斧", "Hand Axe 手斧", "Hatchet 小斧", "Tomahawk 战斧", "力/敏 125/67", "2"], ["武器", "斧", "Axe 斧", "Cleaver 切肉刀", "Small Crescent 小新月斧", "力/敏 115/83", "4"], ["武器", "斧", "Double Axe 双刃斧", "Twin Axe 双子斧", "Ettin Axe 巨人斧", "力/敏 145/45", "5"], ["武器", "斧", "Military Pick 军用镐", "Crowbill 鸦喙镐", "War Spike 战争尖镐", "力/敏 133/54", "6"], ["武器", "斧", "War Axe 战斧", "Naga 娜迦斧", "Berserker Axe 狂战士斧", "力/敏 138/59", "6"], ["武器", "斧（双手）", "Large Axe 大斧", "Military Axe 军用斧", "Feral Axe 野性之斧", "力 196", "4"], ["武器", "斧（双手）", "Broad Axe 阔斧", "Bearded Axe 长须斧", "Silver-edged Axe 银刃斧", "力/敏 166/65", "5"], ["武器", "斧（双手）", "Battle Axe 战斗斧", "Tabar 塔巴斧", "Decapitator 断头斧", "力/敏 189/33", "5"], ["武器", "斧（双手）", "Great Axe 巨斧", "Gothic Axe 哥特斧", "Champion Axe 冠军斧", "力/敏 167/59", "6"], ["武器", "斧（双手）", "Giant Axe 巨人斧", "Ancient Axe 远古之斧", "Glorious Axe 荣耀之斧", "力/敏 164/55", "6"], ["武器", "剑", "Short Sword 短剑", "Gladius 罗马短剑", "Falcata 弯刃短剑", "力/敏 150/88", "2"], ["武器", "剑", "Scimitar 弯刀", "Cutlass 短弯刀", "Ataghan 土耳其弯刀", "力/敏 138/95", "2"], ["武器", "剑", "Sabre 军刀", "Shamshir 波斯弯刀", "Elegant Blade 优雅之刃", "力/敏 109/122", "2"], ["武器", "剑", "Falchion 大砍刀", "Tulwar 印度弯刀", "Hydra Edge 九头蛇刃", "力/敏 142/105", "2"], ["武器", "剑", "Crystal Sword 水晶剑", "Dimensional Blade 空间之刃", "Phase Blade 相位剑", "力/敏 25/136", "6"], ["武器", "剑", "Broad Sword 阔剑", "Battle Sword 战剑", "Conquest Sword 征服之剑", "力/敏 142/112", "4"], ["武器", "剑", "Long Sword 长剑", "Rune Sword 符文剑", "Cryptic Sword 神秘之剑", "力/敏 99/109", "4"], ["武器", "剑", "War Sword 战争之剑", "Ancient Sword 远古之剑", "Mythical Sword 神话之剑", "力/敏 147/124", "3"], ["武器", "剑（双手）", "Two-Handed Sword 双手剑", "Espandon 双手大剑", "Legend Sword 传奇之剑", "力/敏 175/100", "3"], ["武器", "剑（双手）", "Claymore 阔刃大剑", "Dacian Falx 达契亚弯刀", "Highland Blade 高地之刃", "力/敏 171/104", "4"], ["武器", "剑（双手）", "Giant Sword 巨剑", "Tusk Sword 长牙剑", "Balrog Blade 炎魔之刃", "力/敏 185/87", "4"], ["武器", "剑（双手）", "Bastard Sword 杂种剑", "Gothic Sword 哥特剑", "Champion Sword 冠军之剑", "力/敏 163/103", "4"], ["武器", "剑（双手）", "Flamberge 焰形剑", "Zweihander 德式双手剑", "Colossus Sword 巨神之剑", "力/敏 182/95", "5"], ["武器", "剑（双手）", "Great Sword 巨型大剑", "Executioner Sword 处刑者之剑", "Colossus Blade 巨神之刃", "力/敏 189/110", "6"], ["武器", "棍棒", "Club 棍棒", "Cudgel 短棍", "Truncheon 警棍", "力/敏 88/43", "2"], ["武器", "棍棒", "Spiked Club 钉刺棒", "Barbed Club 倒钩棒", "Tyrant Club 暴君之棒", "力/敏 133/52", "2"], ["武器", "钉头锤", "Mace 钉头锤", "Flanged Mace 凸缘锤", "Reinforced Mace 强化钉头锤", "力/敏 145/46", "2"], ["武器", "钉头锤", "Morning Star 晨星锤", "Jagged Star 锯齿星锤", "Devil Star 恶魔星锤", "力/敏 153/44", "3"], ["武器", "钉头锤", "Flail 连枷", "Knout 皮鞭", "Scourge 惩戒连枷", "力/敏 125/77", "5"], ["武器", "战锤", "War Hammer 战锤", "Battle Hammer 战斗锤", "Legendary Mallet 传奇木槌", "力 189", "4"], ["武器", "战锤", "Maul 巨槌", "War Club 战争巨棒", "Ogre Maul 食人魔巨槌", "力 225", "6"], ["武器", "战锤", "Great Maul 巨型槌", "Martel de Fer 铁锤", "Thunder Maul 雷神之锤", "力 253", "6"], ["武器", "权杖", "Scepter 权杖", "Rune Scepter 符文权杖", "Mighty Scepter 强力权杖", "力/敏 125/65", "2"], ["武器", "权杖", "Grand Scepter 大权杖", "Holy Water Sprinkler 圣水洒", "Seraph Rod 炽天使之杖", "力/敏 108/69", "3"], ["武器", "权杖", "War Scepter 战争权杖", "Divine Scepter 神圣权杖", "Caduceus 神使之杖", "力/敏 97/70", "5"], ["武器", "匕首", "Dagger 匕首", "Poignard 短剑匕首", "Bone Knife 骨刀", "力/敏 38/75", "1"], ["武器", "匕首", "Dirk 短剑", "Rondel 圆盘匕首", "Mithril Point 秘银尖刃", "力/敏 55/98", "1"], ["武器", "匕首", "Kris 波刃匕首", "Cinquedeas 五指宽匕首", "Fanged Knife 尖牙刀", "力/敏 42/86", "3"], ["武器", "匕首", "Blade 刃", "Stiletto 细剑匕首", "Legend Spike 传奇尖刺", "力/敏 65/67", "2"], ["武器", "长柄", "Bardiche 巨斧枪", "Lochaber Axe 洛哈伯斧", "Ogre Axe 食人魔斧", "力/敏 195/75", "3"], ["武器", "长柄", "Voulge 阔头枪", "Bill 钩镰枪", "Colossus Voulge 巨神阔头枪", "力/敏 210/55", "4"], ["武器", "长柄", "Scythe 钉镰", "Battle Scythe 战斗钉镰", "Thresher 巨神之镰", "力/敏 152/118", "5"], ["武器", "长柄", "Poleaxe 长柄斧", "Partizan 党卫戟", "Cryptic Axe 秘法斧", "力/敏 165/103", "5"], ["武器", "长柄", "Halberd 戟", "Bec-De-Corbin 鸦嘴锄", "Great Poleaxe 巨型长柄斧", "力/敏 179/99", "6"], ["武器", "长柄", "War Scythe 战争钉镰", "Grim Scythe 阴森钉镰", "Giant Thresher 长柄镰刀", "力/敏 188/140", "6"], ["武器", "长矛", "Spear 矛", "War Spear 战矛", "Hyperion Spear 海伯利安之矛", "力/敏 155/120", "3"], ["武器", "长矛", "Trident 三叉戟", "Fuscina 渔叉", "Stygian Pike 冥河长枪", "力/敏 168/97", "4"], ["武器", "长矛", "Brandistock 多叉枪", "War Fork 战叉", "Mancatcher 捕人叉", "力/敏 132/134", "5"], ["武器", "长矛", "Spetum 钩镰枪", "Yari 日式长枪", "Ghost Spear 幽魂之矛", "力/敏 122/163", "6"], ["武器", "长矛", "Pike 长枪", "Lance 骑枪", "War Pike 战争长枪", "力/敏 165/106", "6"], ["武器", "法杖", "Short Staff 短杖", "Jo Staff 乔木杖", "Walking Stick 手杖", "力 25", "2"], ["武器", "法杖", "Long Staff 长杖", "Quarter Staff 四分杖", "Stalagmite 石笋杖", "力/敏 63/35", "3"], ["武器", "法杖", "Gnarled Staff 多节杖", "Cedar Staff 杉木杖", "Elder Staff 长老法杖", "力/敏 44/37", "4"], ["武器", "法杖", "Battle Staff 战斗法杖", "Gothic Staff 哥特法杖", "Shillelagh 爱尔兰棍棒", "力/敏 52/27", "4"], ["武器", "法杖", "War Staff 战争法杖", "Rune Staff 符文法杖", "Archon Staff 执政官法杖", "力 34", "6"], ["武器", "魔杖", "Wand 魔杖", "Burnt Wand 焦黑魔杖", "Polished Wand 磨光魔杖", "力 25", "2"], ["武器", "魔杖", "Yew Wand 紫杉魔杖", "Petrified Wand 石化魔杖", "Ghost Wand 幽魂魔杖", "力 25", "2"], ["武器", "魔杖", "Bone Wand 骨魔杖", "Tomb Wand 墓穴魔杖", "Lich Wand 巫妖魔杖", "力 25", "2"], ["武器", "魔杖", "Grim Wand 阴森魔杖", "Grave Wand 坟墓魔杖", "Unearthed Wand 出土魔杖", "力 25", "2"], ["武器", "弓", "Short Bow 短弓", "Edge Bow 利刃弓", "Spider Bow 蜘蛛弓", "力/敏 64/143", "3"], ["武器", "弓", "Hunter's Bow 猎人之弓", "Razor Bow 剃刀弓", "Blade Bow 刀刃弓", "力/敏 76/119", "4"], ["武器", "弓", "Long Bow 长弓", "Cedar Bow 杉木弓", "Shadow Bow 暗影之弓", "力/敏 52/188", "5"], ["武器", "弓", "Composite Bow 复合弓", "Double Bow 双弓", "Great Bow 巨弓", "力/敏 121/107", "4"], ["武器", "弓", "Short Battle Bow 短战弓", "Short Siege Bow 短攻城弓", "Diamond Bow 钻石弓", "力/敏 89/132", "5"], ["武器", "弓", "Long Battle Bow 长战弓", "Large Siege Bow 大攻城弓", "Crusader Bow 十字军弓", "力/敏 97/121", "6"], ["武器", "弓", "Short War Bow 短战争弓", "Rune Bow 符文弓", "Ward Bow 守护之弓", "力/敏 72/146", "5"], ["武器", "弓", "Long War Bow 长战争弓", "Gothic Bow 哥特弓", "Hydra Bow 九头蛇弓", "力/敏 134/167", "6"], ["武器", "弩", "Light Crossbow 轻弩", "Arbalest 强弩", "Pellet Bow 弹丸弩", "力/敏 83/155", "3"], ["武器", "弩", "Crossbow 弩", "Siege Crossbow 攻城弩", "Gorgon Crossbow 蛇发女妖弩", "力/敏 117/105", "4"], ["武器", "弩", "Heavy Crossbow 重弩", "Ballista 弩炮", "Colossus Crossbow 巨神弩", "力/敏 163/77", "6"], ["武器", "弩", "Repeating Crossbow 连发弩", "Chu-Ko-Nu 诸葛弩", "Demon Crossbow 恶魔弩", "力/敏 141/98", "5"], ["武器", "投掷", "Throwing Knife 投掷刀", "Battle Dart 战斗飞镖", "Flying Knife 飞刀", "力/敏 48/141", "—"], ["武器", "投掷", "Throwing Axe 投掷斧", "Francisca 法兰西斧", "Flying Axe 飞斧", "力/敏 88/108", "—"], ["武器", "投掷", "Balanced Knife 平衡刀", "War Dart 战争飞镖", "Winged Knife 飞翼之刀", "力/敏 45/142", "—"], ["武器", "投掷", "Balanced Axe 平衡斧", "Hurlbat 投掷棒", "Winged Axe 飞翼之斧", "力/敏 96/122", "—"], ["武器", "标枪", "Javelin 标枪", "War Javelin 战争标枪", "Hyperion Javelin 海伯利安标枪", "力/敏 98/123", "—"], ["武器", "标枪", "Pilum 重标枪", "Great Pilum 巨型重标枪", "Stygian Pilum 冥河重标枪", "力/敏 118/112", "—"], ["武器", "标枪", "Short Spear 短矛", "Simbilan 辛比兰矛", "Balrog Spear 炎魔之矛", "力/敏 127/95", "—"], ["武器", "标枪", "Glaive 投掷剑", "Spiculum 投枪", "Ghost Glaive 幽魂投掷剑", "力/敏 89/137", "—"], ["武器", "标枪", "Throwing Spear 投掷矛", "Harpoon 鱼叉", "Winged Harpoon 飞翼鱼叉", "力/敏 76/145", "—"]];
+const ZCATS=["全部","防具","职业专属","武器"];
+let zst={q:"",cat:"全部",sub:""};
+function zsubs(){
+  const s=[...new Set(BASES.filter(b=>zst.cat==="全部"||b[0]===zst.cat).map(b=>b[1]))];
+  const sel=document.getElementById("zsub");
+  sel.innerHTML='<option value="">全部部位</option>'+s.map(x=>`<option${x===zst.sub?" selected":""}>${x}</option>`).join("");
+  if(zst.sub && !s.includes(zst.sub)) zst.sub="";
+}
+function zrender(){
+  const q=zst.q.trim().toLowerCase();
+  const list=BASES.filter(b=>{
+    if(zst.cat!=="全部" && b[0]!==zst.cat) return false;
+    if(zst.sub && b[1]!==zst.sub) return false;
+    if(q && !b.join(" ").toLowerCase().includes(q)) return false;
+    return true;
+  });
+  document.getElementById("zcount").textContent=`共 ${list.length} / ${BASES.length} 系（${list.length*3} 件）`;
+  document.getElementById("zempty").style.display=list.length?"none":"block";
+  document.getElementById("baseRows").innerHTML=list.map(b=>
+    `<tr><td style="color:var(--muted)">${esc(b[1])}</td><td>${esc(b[2])}</td><td>${esc(b[3])}</td>`
+    +`<td style="color:var(--gold)">${esc(b[4])}</td><td>${esc(b[5])}</td><td style="text-align:center">${esc(b[6])}</td></tr>`).join("");
+}
+(function(){
+  const el=document.getElementById("zcats");
+  ZCATS.forEach(v=>{
+    const b=document.createElement("button");b.className="chip";b.type="button";b.textContent=v;
+    b.setAttribute("aria-pressed",zst.cat===v);
+    b.onclick=()=>{zst.cat=v;el.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c.textContent===v));zsubs();zrender()};
+    el.appendChild(b);
+  });
+  document.getElementById("zsub").addEventListener("change",e=>{zst.sub=e.target.value;zrender()});
+  document.getElementById("zq").addEventListener("input",e=>{zst.q=e.target.value;zrender()});
+  const ZUP=[["暗金武器","拉尔 Ral #8 + 索尔 Sol #12 + 完美绿宝石","卢姆 Lum #17 + 普尔 Pul #21 + 完美绿宝石"],
+   ["暗金防具","塔尔 Tal #7 + 沙尔 Shael #13 + 完美钻石","科 Ko #18 + 蓝姆 Lem #20 + 完美钻石"],
+   ["套装武器","拉尔 Ral #8 + 索尔 Sol #12 + 完美绿宝石","卢姆 Lum #17 + 普尔 Pul #21 + 完美绿宝石"],
+   ["套装防具","塔尔 Tal #7 + 沙尔 Shael #13 + 完美钻石","科 Ko #18 + 蓝姆 Lem #20 + 完美钻石"],
+   ["稀有武器","欧特 Ort #9 + 安姆 Amn #11 + 完美蓝宝石","法尔 Fal #19 + 乌姆 Um #22 + 完美蓝宝石"],
+   ["稀有防具","拉尔 Ral #8 + 书尔 Thul #10 + 完美紫水晶","科 Ko #18 + 普尔 Pul #21 + 完美紫水晶"]];
+  document.getElementById("zupRows").innerHTML=ZUP.map(r=>
+    `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join("");
+  zsubs(); zrender();
+})();
 
 document.getElementById("themeBtn").onclick=()=>{
   const cur=document.documentElement.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");
