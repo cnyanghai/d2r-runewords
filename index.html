@@ -260,7 +260,7 @@ section[hidden]{display:none}
 
   <h2 class="ch">制作装备（Crafted）</h2>
   <p class="notes">配方是「<b>蓝色魔法品质的指定底材 + 1 颗珠宝 + 指定符文 + 指定完美宝石</b>」。四个系列各用一种宝石，而且<b>每个系列的每个部位都指定了具体底材</b>——不是随便一件该部位的装备都行。表里写的是普通档的名字，该底材的精良档和精英档同样可用（例如血腥头盔可以用头盔、盔、全罩头盔）。</p>
-  <div class="scroll"><table class="runes-table"><thead><tr><th>部位</th><th>血腥 Blood<br><small>完美红宝石</small></th><th>卡那 Caster<br><small>完美紫水晶</small></th><th>狩猎者 Hit Power<br><small>完美蓝宝石</small></th><th>安全 Safety<br><small>完美绿宝石</small></th></tr></thead><tbody>
+  <div class="scroll"><table class="runes-table"><thead><tr><th>部位</th><th>血腥 Blood<br><small>完美红宝石</small></th><th>施法 Caster<br><small>完美紫水晶</small></th><th>打击 Hit Power<br><small>完美蓝宝石</small></th><th>安全 Safety<br><small>完美绿宝石</small></th></tr></thead><tbody>
     <tr><td>头盔</td><td>头盔 Helm<br>+ 拉尔</td><td>面具 Mask<br>+ 那夫</td><td>全罩盔 Full Helm<br>+ 伊司</td><td>王冠 Crown<br>+ 伊司</td></tr>
     <tr><td>铠甲</td><td>板甲 Plate Mail<br>+ 书尔</td><td>轻型板甲 Light Plate<br>+ 塔尔</td><td>战地板甲 Field Plate<br>+ 那夫</td><td>胸甲 Breast Plate<br>+ 爱斯</td></tr>
     <tr><td>盾牌</td><td>钉刺盾 Spiked Shield<br>+ 伊司</td><td>小盾 Small Shield<br>+ 爱斯</td><td>哥特盾 Gothic Shield<br>+ 爱斯</td><td>鸢盾 Kite Shield<br>+ 那夫</td></tr>
@@ -271,7 +271,64 @@ section[hidden]{display:none}
     <tr><td>戒指</td><td>戒指<br>+ 索尔</td><td>戒指<br>+ 安姆</td><td>戒指<br>+ 安姆</td><td>戒指<br>+ 安姆</td></tr>
     <tr><td>武器</td><td>斧 Axe<br>+ 欧特</td><td>魔杖 Rod 类<br>+ 特尔</td><td>钝器 Blunt 类<br>+ 特尔</td><td>长矛 Spear<br>+ 索尔</td></tr>
   </tbody></table></div>
-  <p class="notes">四个系列各自的固定词缀方向：<b>血腥</b>走杀怪回血、吸血、+生命、压碎性打击；<b>卡那</b>走+技能、施法速度、法力、杀怪回魔；<b>狩猎者</b>走命中、致盲目标、压碎、击中使怪物逃跑；<b>安全</b>走防御、抗性、减伤、魔法减伤。成品带 1–4 条该系列的固定词缀，外加随机词缀，所以好东西要靠量产碰运气。</p>
+  <p class="notes">成品的属性分两部分：<b>固定词缀</b>（这条线保证给，每件必带）加上 <b>1–4 条随机魔法词缀</b>（和蓝装同一个池子，档位看物品等级）。所以同一个配方做出来的东西保底部分完全一样，差别全在随机那截。四条线的固定词缀见下面四张表。</p>
+
+  <h2 class="ch">四个系列的固定词缀</h2>
+  <p class="notes"><b>血腥 Blood</b>（完美红宝石）——核心是吸血和生命，每个部位都带 <b>1-3% 吸血 + 10-20 生命</b>，第三条按部位变。</p>
+  <div class="scroll"><table class="runes-table"><thead><tr><th style="width:7em">部位</th><th>第三条固定词缀</th></tr></thead><tbody>
+    <tr><td>武器</td><td>+35-60% 增强伤害（吸血提升到 1-4%）</td></tr>
+    <tr><td>头盔</td><td>5-10% 致命一击</td></tr>
+    <tr><td>铠甲</td><td>杀死恶魔回血 +1-3</td></tr>
+    <tr><td>盾牌</td><td>反伤 4-7</td></tr>
+    <tr><td>手套</td><td>5-10% 压碎性打击</td></tr>
+    <tr><td>腰带</td><td>5-10% 撕裂伤口</td></tr>
+    <tr><td>鞋子</td><td>生命恢复 +5-10</td></tr>
+    <tr><td>护身符</td><td>+5-10% 跑步速度（吸血提升到 1-4%）</td></tr>
+    <tr><td>戒指</td><td>+1-5 力量</td></tr>
+  </tbody></table></div>
+
+  <p class="notes" style="margin-top:20px"><b>施法 Caster</b>（完美紫水晶）——核心是<b>法力</b>，不是加技能。每个部位都带 <b>法力回复 4-10% + 10-20 法力</b>。</p>
+  <div class="scroll"><table class="runes-table"><thead><tr><th style="width:7em">部位</th><th>第三条固定词缀</th></tr></thead><tbody>
+    <tr><td>腰带</td><td><b>+5-10% 施法速度</b></td></tr>
+    <tr><td>护身符</td><td><b>+5-10% 施法速度</b></td></tr>
+    <tr><td>头盔</td><td>1-4% 偷取法力</td></tr>
+    <tr><td>铠甲</td><td>杀怪回魔 +1-3</td></tr>
+    <tr><td>手套</td><td>杀怪回魔 +1-3</td></tr>
+    <tr><td>鞋子</td><td>最大法力 +2-5%</td></tr>
+    <tr><td>武器</td><td>最大法力 +1-5%</td></tr>
+    <tr><td>盾牌</td><td>+5-10% 格挡率</td></tr>
+    <tr><td>戒指</td><td>+1-5 精力</td></tr>
+  </tbody></table></div>
+  <p class="notes">施法速度只在<b>腰带和护身符</b>保底，这两样才是刷施法系列的真正目标。+技能不在固定词缀里，只能靠随机那截碰。</p>
+
+  <p class="notes" style="margin-top:20px"><b>打击 Hit Power</b>（完美蓝宝石）——名字和效果最不符的一条线，实际核心是<b>被击中时触发冰霜新星加反伤</b>。每个部位都带 <b>5% 几率释放 4 级冰霜新星（被击中时）+ 反伤 3-10</b>。</p>
+  <div class="scroll"><table class="runes-table"><thead><tr><th style="width:7em">部位</th><th>第三条固定词缀</th></tr></thead><tbody>
+    <tr><td>武器</td><td>+35-60% 增强伤害</td></tr>
+    <tr><td>铠甲</td><td>+10-20% 恢复速度</td></tr>
+    <tr><td>头盔</td><td>+25-50 远程防御</td></tr>
+    <tr><td>鞋子</td><td>+25-50 远程防御</td></tr>
+    <tr><td>盾牌</td><td>+5-10% 格挡率</td></tr>
+    <tr><td>手套</td><td>击退</td></tr>
+    <tr><td>腰带</td><td>5-10% 伤害转为法力</td></tr>
+    <tr><td>护身符</td><td>3-11% 击中使怪物逃跑</td></tr>
+    <tr><td>戒指</td><td>+1-5 敏捷</td></tr>
+  </tbody></table></div>
+
+  <p class="notes" style="margin-top:20px"><b>安全 Safety</b>（完美绿宝石）——核心是防御和减伤，每个部位都带 <b>魔法减伤 1-2 + 物理减伤 1-4</b>。</p>
+  <div class="scroll"><table class="runes-table"><thead><tr><th style="width:7em">部位</th><th>其余固定词缀</th></tr></thead><tbody>
+    <tr><td>头盔</td><td>+10-30% 增强防御、电抗 +5-10%</td></tr>
+    <tr><td>铠甲</td><td>+10-30% 增强防御、<b>冻结时间减半</b></td></tr>
+    <tr><td>盾牌</td><td>+10-30% 增强防御、<b>魔法抗性 +5-10%</b></td></tr>
+    <tr><td>手套</td><td>+10-30% 增强防御、冰抗 +5-10%</td></tr>
+    <tr><td>腰带</td><td>+10-30% 增强防御、毒抗 +5-10%</td></tr>
+    <tr><td>鞋子</td><td>+10-30% 增强防御、火抗 +5-10%</td></tr>
+    <tr><td>护身符</td><td>+1-10% 格挡率</td></tr>
+    <tr><td>戒指</td><td>+1-5 体力</td></tr>
+    <tr><td>武器</td><td>+5-10% 增强防御</td></tr>
+  </tbody></table></div>
+  <p class="notes">安全盾的<b>魔法抗性</b>值得单独提一句：这条属性在全游戏里极其罕见，安全盾是少数几个能拿到的途径之一。</p>
+
+  <p class="notes" style="margin-top:20px"><b>值得刷的几样</b>：施法腰带和施法护身符（施法速度保底）、血腥手套（压碎性打击）、安全盾（魔法抗性）。其余部位的固定词缀大多偏弱，不如直接找对应的暗金。</p>
   <ul class="notes">
     <li>底材必须是<b>蓝色魔法品质</b>的，白装、黄装、绿装、暗金都不行。</li>
     <li>成品的物品等级取决于底材等级和角色等级，等级越高能出的词缀档位越好——想刷高属性，用精英底材并且在高等级角色上做。</li>
@@ -300,8 +357,8 @@ section[hidden]{display:none}
   <p class="notes" style="margin-top:18px"><b>重掷与制作</b></p>
   <ul class="notes">
     <li>3 颗完美宝石（任意种类）+ 魔法戒指或护身符 = 属性全部重掷。这是把一枚废戒指洗成好戒指的办法，但物品等级会按当前角色等级重算。</li>
-    <li>制作戒指：魔法戒指 + 珠宝 + 完美宝石 + 符文，四个系列见上面的制作装备表（血腥用索尔，其余三系都用安姆）。</li>
-    <li>制作护身符：魔法护身符 + 珠宝 + 完美宝石 + 符文（血腥安姆、卡那拉尔、狩猎者书尔、安全书尔）。卡那护身符是施法职业常刷的目标。</li>
+    <li>制作戒指：魔法戒指 + 珠宝 + 完美宝石 + 符文，四个系列见上面的制作装备表（血腥用索尔，施法/打击/安全都用安姆）。</li>
+    <li>制作护身符：魔法护身符 + 珠宝 + 完美宝石 + 符文（血腥安姆、施法拉尔、打击书尔、安全书尔）。施法护身符保底 +5-10% 施法速度，是施法职业最值得刷的一样。</li>
     <li>戒指和护身符<b>不能打孔</b>，也没有普通/精良/精英分级，所以升级底材那套配方对它们无效。</li>
   </ul>
 
@@ -642,8 +699,8 @@ add("洗属性","高品质稀有物品","1 颗完美骷髅头 + 稀有物品 + �
 // 制作装备 36
 const CRAFT=[
  ["血腥","完美红宝石",[["头盔","头盔 Helm","拉尔"],["铠甲","板甲 Plate Mail","书尔"],["盾牌","钉刺盾 Spiked Shield","伊司"],["手套","重手套 Heavy Gloves","那夫"],["腰带","腰带 Belt","塔尔"],["鞋子","轻型板甲靴 Light Plated Boots","爱斯"],["护身符","护身符","安姆"],["戒指","戒指","索尔"],["武器","斧 Axe","欧特"]]],
- ["卡那","完美紫水晶",[["头盔","面具 Mask","那夫"],["铠甲","轻型板甲 Light Plate","塔尔"],["盾牌","小盾 Small Shield","爱斯"],["手套","皮手套 Leather Gloves","欧特"],["腰带","轻腰带 Light Belt","伊司"],["鞋子","鞋 Boots","书尔"],["护身符","护身符","拉尔"],["戒指","戒指","安姆"],["武器","魔杖 Rod 类","特尔"]]],
- ["狩猎者","完美蓝宝石",[["头盔","全罩盔 Full Helm","伊司"],["铠甲","战地板甲 Field Plate","那夫"],["盾牌","哥特盾 Gothic Shield","爱斯"],["手套","链甲手套 Chain Gloves","欧特"],["腰带","重腰带 Heavy Belt","塔尔"],["鞋子","链甲靴 Chain Boots","拉尔"],["护身符","护身符","书尔"],["戒指","戒指","安姆"],["武器","钝器 Blunt 类","特尔"]]],
+ ["施法","完美紫水晶",[["头盔","面具 Mask","那夫"],["铠甲","轻型板甲 Light Plate","塔尔"],["盾牌","小盾 Small Shield","爱斯"],["手套","皮手套 Leather Gloves","欧特"],["腰带","轻腰带 Light Belt","伊司"],["鞋子","鞋 Boots","书尔"],["护身符","护身符","拉尔"],["戒指","戒指","安姆"],["武器","魔杖 Rod 类","特尔"]]],
+ ["打击","完美蓝宝石",[["头盔","全罩盔 Full Helm","伊司"],["铠甲","战地板甲 Field Plate","那夫"],["盾牌","哥特盾 Gothic Shield","爱斯"],["手套","链甲手套 Chain Gloves","欧特"],["腰带","重腰带 Heavy Belt","塔尔"],["鞋子","链甲靴 Chain Boots","拉尔"],["护身符","护身符","书尔"],["戒指","戒指","安姆"],["武器","钝器 Blunt 类","特尔"]]],
  ["安全","完美绿宝石",[["头盔","王冠 Crown","伊司"],["铠甲","胸甲 Breast Plate","爱斯"],["盾牌","鸢盾 Kite Shield","那夫"],["手套","钢手 Gauntlets","拉尔"],["腰带","布腰带 Sash","塔尔"],["鞋子","板甲靴 Plated Boots","欧特"],["护身符","护身符","书尔"],["戒指","戒指","安姆"],["武器","长矛 Spear","索尔"]]]];
 CRAFT.forEach(([ser,gem,rows])=>rows.forEach(([slot,base,rune])=>
   add("制作装备",`${ser}${slot}`,`魔法${base} + 珠宝 + ${rune} + ${gem}`,"底材三档通用")));
