@@ -117,6 +117,7 @@ section[hidden]{display:none}
   <button role="tab" aria-selected="false" data-tab="cube">赫拉迪克方块</button>
   <button role="tab" aria-selected="false" data-tab="base">底材</button>
   <button role="tab" aria-selected="false" data-tab="book">配方书</button>
+  <button role="tab" aria-selected="false" data-tab="uber">终局 Uber</button>
   <button role="tab" aria-selected="false" data-tab="notes">评级与制作规则</button>
 </nav>
 
@@ -448,6 +449,65 @@ section[hidden]{display:none}
   <p class="notes" style="margin-top:22px">这是游戏内赫拉迪克方块配方书的完整对照表，共 <b id="btotal"></b> 条（含 2 条标注「无配方」的护符说明）。材料不标数量的默认为 1 件。符文和宝石升级、制作装备这几类条目多但规律固定，上面的「赫拉迪克方块」标签页里有分类讲解和实战建议。</p>
 </section>
 
+
+<section id="tab-uber" hidden>
+  <p class="notes" style="margin-top:18px">普通流程打完巴尔就结束了，<b>Uber</b> 是额外的一套终局挑战，正式名字叫<b>潘地门事件</b>（Pandemonium Event）。奖励是三个暗金护符里的两个——这两个不从任何怪物身上掉，只能这样拿。</p>
+  <p class="notes"><b>暗黑复制体</b>是独立的另一件事，和钥匙无关，而且离线单机反而最容易，见下面。</p>
+
+  <h2 class="ch">第一步：地狱难度刷三把钥匙</h2>
+  <div class="scroll"><table class="runes-table"><thead><tr><th>钥匙</th><th>掉落者</th><th>位置</th><th style="width:5em">掉率</th></tr></thead><tbody>
+    <tr><td>恐惧之钥 Key of Terror</td><td>女伯爵 Countess</td><td>第一幕 遗忘之塔 第 5 层</td><td>约 1/12</td></tr>
+    <tr><td>仇恨之钥 Key of Hate</td><td>召唤者 Summoner</td><td>第二幕 秘术奇瑞魔塔</td><td>约 1/11</td></tr>
+    <tr><td>毁灭之钥 Key of Destruction</td><td>尼拉塞克 Nihlathak</td><td>第五幕 沃特大厅</td><td>约 1/10</td></tr>
+  </tbody></table></div>
+  <p class="notes"><b>必须地狱难度</b>，噩梦不掉。凑一套三把大约 30–50 趟。</p>
+
+  <h2 class="ch">第二步：开红门打小 Boss 拿器官</h2>
+  <p class="notes">三把钥匙一套放进方块，<b>在第五幕营地</b>转换，开出一个<b>随机</b>红门，三个区域之一：</p>
+  <div class="scroll"><table class="runes-table"><thead><tr><th>区域</th><th>Boss</th><th>掉落器官</th><th>注意</th></tr></thead><tbody>
+    <tr><td>主母的巢穴 Matron's Den</td><td>莉莉丝 Lilith</td><td>暗黑破坏神之角</td><td>放剧毒新星，毒抗要堆高</td></tr>
+    <tr><td>遗忘之沙 Forgotten Sands</td><td>杜瑞尔 Duriel</td><td>巴尔之眼</td><td>带神圣冰冻，必须免疫冻结</td></tr>
+    <tr><td>痛苦之炉 Furnace of Pain</td><td>埃索 Izual</td><td>墨菲斯托之脑</td><td>神圣冰冻 + 信念光环，抗性压力最大</td></tr>
+  </tbody></table></div>
+  <p class="notes">区域随机，所以凑齐三个器官要刷<b>三套钥匙</b>，也就是九把。</p>
+
+  <h2 class="ch">第三步：Uber 崔斯特姆</h2>
+  <p class="notes">三个器官放进方块，同样在第五幕营地转换，开红门进去。里面<b>三个 Boss 同时在场</b>：Uber 墨菲斯托、Uber 巴尔、潘地门之暗黑破坏神。打完掉<b>毁灭之火炬</b>。</p>
+
+  <h2 class="ch">打之前必须知道的几件事</h2>
+  <ul class="notes">
+    <li><b>先杀 Uber 墨菲斯托。</b>他带<b>信念光环</b>，会把你全部抗性砍掉约 150 点。不先处理他，你在里面全程是裸抗状态。这条不是建议。</li>
+    <li><b>硬性准备</b>：全抗 75%、<b>免疫冻结</b>（杜瑞尔和埃索都带神圣冰冻）、3000 以上生命、一个<b>生命偷取</b>来源（卓古拉之握，或带生命偷取充能的武器）、<b>压碎性打击</b>（Uber 血量极高，纯伤害打不动）。</li>
+    <li><b>等级</b>：没有硬性限制，但现实要求是 85 级以上、装备接近毕业。80 级以下不建议碰。</li>
+    <li><b>红门是一次性的</b>，离开游戏就消失，而钥匙已经消耗掉了。软核死了不丢角色，但装备掉在地上，而且怪不会消失，回去捡尸体很危险。</li>
+  </ul>
+
+  <h2 class="ch">暗黑复制体（离线最容易）</h2>
+  <p class="notes">和钥匙完全无关。<b>在地狱难度把一枚乔丹之石卖给任意商人</b>，暗黑复制体立刻刷新，替换掉你当前游戏里下一个超唯一怪。杀了掉<b>小天使之戒</b>。</p>
+  <div class="scroll"><table class="runes-table"><thead><tr><th>模式</th><th>触发条件</th></tr></thead><tbody>
+    <tr><td><b>离线单机</b></td><td>卖出 <b>1 枚</b>乔丹之石即触发</td></tr>
+    <tr><td>在线</td><td>全服累计 75–120 枚推进一个阶段，共六个阶段，到第六阶段全服公告后刷新</td></tr>
+  </tbody></table></div>
+  <p class="notes">卖掉的乔丹之石买不回来。这是单机玩家最先能拿下的终局内容，比 Uber 崔斯特姆简单得多。</p>
+
+  <h2 class="ch">三个暗金护符</h2>
+  <div class="scroll"><table class="runes-table"><thead><tr><th>护符</th><th>属性</th><th>来源</th><th style="width:4em">等级</th></tr></thead><tbody>
+    <tr><td>基德的财富<br><small>Gheed's Fortune</small></td><td>80-160% 额外金币、商店价格 -10-15%、20-40% MF</td><td>地狱难度<b>正常掉落</b></td><td>62</td></tr>
+    <tr><td>小天使之戒<br><small>Annihilus</small></td><td>+1 全技能、+10-20 全属性、全抗 +10-20、+5-10% 经验</td><td>暗黑复制体</td><td>70</td></tr>
+    <tr><td>毁灭之火炬<br><small>Hellfire Torch</small></td><td>+3 随机职业技能、+10-20 全属性、全抗 +10-20、+8 光照、九头蛇充能</td><td>Uber 崔斯特姆</td><td>75</td></tr>
+  </tbody></table></div>
+  <p class="notes">后两个确实不从任何怪物身上掉，所以一直没见过掉落是正常的。<b>D2R 里这三个离线单机全都能拿到</b>——经典版 1.x 时代小天使之戒和火炬是在线专属，很多中文老攻略还是那个说法，别被带偏。</p>
+
+  <h2 class="ch">乔丹之石怎么来</h2>
+  <ul class="notes">
+    <li>它就是一枚普通掉落的<b>暗金戒指</b>，没有合成途径。属性是 +1 全技能、最大法力 +25%、+20 法力、1-12 电伤，穿戴等级 29。</li>
+    <li>物品等级低，<b>不需要去 85 区</b>。噩梦后期和地狱的任何高密度区域都能掉，关键是击杀量加 MF。崔凡克的议会成员是常见选择，密度高、掉落好。</li>
+    <li>赌博戒指也有机会出暗金戒指，单机玩家常这么刷，因为戒指赌博便宜、可以反复来。具体概率未经核实。</li>
+    <li><b>先翻自己的仓库。</b>玩到一定量级很可能早就捡到过只是没在意——它图标就是一枚普通戒指，不识别看不出来。</li>
+  </ul>
+  <p class="notes">另外注意：乔丹之石（SOJ）和<b>乔符文 Jah #31</b> 是两样完全不同的东西，中文看着像。乔符文是做谜团、最后的愿望那些用的高符文。</p>
+</section>
+
 <section id="tab-notes" class="notes" hidden>
   <h2>评级怎么看</h2>
   <div class="tierline">
@@ -684,7 +744,7 @@ const upEl=document.getElementById("upRows"); if(upEl) upEl.innerHTML=upBody;
 
 document.querySelectorAll("nav.tabs button").forEach(b=>b.onclick=()=>{
   document.querySelectorAll("nav.tabs button").forEach(x=>x.setAttribute("aria-selected",x===b));
-  ["rw","runes","cube","base","book","notes"].forEach(t=>document.getElementById("tab-"+t).hidden=(t!==b.dataset.tab));
+  ["rw","runes","cube","base","book","uber","notes"].forEach(t=>document.getElementById("tab-"+t).hidden=(t!==b.dataset.tab));
 });
 
 
@@ -773,8 +833,8 @@ add("药水","解毒药水","窒息瓦斯药水 + 任意治疗药水","");
 add("任务与红门","赫拉迪克法杖","君王之杖 + 毒蛇护身符","第二幕任务");
 add("任务与红门","卡林的意志","卡林的连枷 + 心 + 眼 + 脑","第三幕任务");
 add("任务与红门","秘密奶牛关传送门","维特的腿 + 城镇传送卷轴书","在第一幕营地转换");
-add("任务与红门","Uber 小 Boss 红门","恐惧之钥 + 仇恨之钥 + 毁灭之钥","随机通往三个小关之一");
-add("任务与红门","Uber 崔斯特姆红门","暗黑破坏神之角 + 巴尔之眼 + 墨菲斯托之脑","在第五幕营地转换");
+add("任务与红门","Uber 小 Boss 红门","恐惧之钥 + 仇恨之钥 + 毁灭之钥","在第五幕营地转换。钥匙由地狱难度的女伯爵、召唤者、尼拉塞克掉落，随机通往主母的巢穴/遗忘之沙/痛苦之炉之一");
+add("任务与红门","Uber 崔斯特姆红门","暗黑破坏神之角 + 巴尔之眼 + 墨菲斯托之脑","在第五幕营地转换。三个器官分别由莉莉丝、杜瑞尔、埃索掉落；打完掉毁灭之火炬");
 add("任务与红门","赦免代币","扭曲的痛苦精华 + 充能的仇恨精华 + 燃烧的恐惧精华 + 腐臭的毁灭精华","洗一次技能点和属性点");
 add("任务与红门","巨神之巅红门","5 种世界之石碎片各一份","术士之治资料片");
 // 物品转换 7
