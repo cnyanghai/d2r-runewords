@@ -115,6 +115,7 @@ section[hidden]{display:none}
   <button role="tab" aria-selected="true" data-tab="rw">符文之语</button>
   <button role="tab" aria-selected="false" data-tab="runes">33 颗符文</button>
   <button role="tab" aria-selected="false" data-tab="cube">赫拉迪克方块</button>
+  <button role="tab" aria-selected="false" data-tab="book">配方书</button>
   <button role="tab" aria-selected="false" data-tab="notes">评级与制作规则</button>
 </nav>
 
@@ -178,29 +179,138 @@ section[hidden]{display:none}
   </tbody></table></div>
   <p class="notes">想要固定的最大孔数，用第五幕拉苏克的任务奖励：给白色普通装备打孔时他会直接给该底材的最大孔数，这是做符文之语最稳的办法。</p>
 
-  <h2 class="ch">装备升级（普通→精良→精英）</h2>
+  <h2 class="ch">普通 / 精良 / 精英：底材分级</h2>
+  <p class="notes">游戏里每种装备都有三档底材，白装、暗金、套装、稀有都按这三档划分。同名词缀装在更高一档的底材上，基础伤害和防御会明显更高，代价是力量/敏捷需求和等级需求也更高。</p>
+  <div class="scroll"><table class="runes-table"><thead><tr><th>分级</th><th>出现难度</th><th>底材举例</th><th>暗金举例</th></tr></thead><tbody>
+    <tr><td>普通 Normal</td><td>普通难度起</td><td>轻型铠甲、水晶剑、哥特式盾</td><td>黄金皮肤、抽搐、热靴</td></tr>
+    <tr><td>精良 Exceptional</td><td>噩梦难度起</td><td>法师铠甲、空间之刃、远古之盾</td><td>蛇魔法皮、沙夫斯托普、杜瑞尔之壳</td></tr>
+    <tr><td>精英 Elite</td><td>地狱难度起</td><td>执政官铠甲、相位剑、君主盾</td><td>泰瑞尔之力、哈林之影、亚凯恩之勇</td></tr>
+  </tbody></table></div>
+  <p class="notes">同一件暗金只会以某一档底材出现：比如蛇魔法皮天生就是精良的法师铠甲，哈林之影天生就是精英的头骨帽。戒指、护身符、护符、珠宝没有分级。</p>
+
+  <h2 class="ch">升级底材（普通→精良→精英）</h2>
   <div class="scroll"><table class="runes-table"><thead><tr><th>类型</th><th>普通 → 精良</th><th>精良 → 精英</th></tr></thead><tbody>
     <tr><td>暗金武器</td><td>拉尔 + 索尔 + 完美绿宝石</td><td>卢姆 + 普尔 + 完美绿宝石</td></tr>
-    <tr><td>暗金盔甲/盾牌</td><td>塔尔 + 沙尔 + 完美钻石</td><td>科 + 蓝姆 + 完美钻石</td></tr>
+    <tr><td>暗金防具</td><td>塔尔 + 沙尔 + 完美钻石</td><td>科 + 蓝姆 + 完美钻石</td></tr>
+    <tr><td>套装武器</td><td>拉尔 + 索尔 + 完美绿宝石</td><td>卢姆 + 普尔 + 完美绿宝石</td></tr>
+    <tr><td>套装防具</td><td>塔尔 + 沙尔 + 完美钻石</td><td>科 + 蓝姆 + 完美钻石</td></tr>
+    <tr><td>稀有武器</td><td>欧特 + 安姆 + 完美蓝宝石</td><td>法尔 + 乌姆 + 完美蓝宝石</td></tr>
+    <tr><td>稀有防具</td><td>拉尔 + 书尔 + 完美紫水晶</td><td>科 + 普尔 + 完美紫水晶</td></tr>
   </tbody></table></div>
-  <p class="notes">升级会提高底材的基础伤害/防御和属性需求，但不会改变原有词缀。套装和稀有装备也有对应的升级配方，符文组合与暗金不同，建议在游戏内的配方书或资料站上核对后再动手——升级不可逆。</p>
-
-  <h2 class="ch">洗属性</h2>
   <ul class="notes">
-    <li>3 颗完美宝石（同一种）+ 1 件魔法物品 = 重掷该魔法物品的属性。</li>
-    <li>6 颗完美宝石（六种各一颗）+ 1 件稀有物品 = 重掷该稀有物品的属性。</li>
-    <li>重掷结果完全随机，物品等级会按角色等级重新计算，有可能变差。</li>
+    <li>升级只换底材，不会改变原有词缀，也不会把普通暗金变成同名的精英暗金（比如把普通的某件暗金升上去，它不会变成那件精英暗金）。</li>
+    <li>无形（Eth）装备可以升级，升级后仍然是无形；已经镶好的符文、珠宝、宝石会保留在孔里。</li>
+    <li>操作不可逆，升级后力量、敏捷、等级需求都会跟着涨，动手前先确认自己穿得上。</li>
+    <li>值得升的通常是那些词缀按百分比吃底材的装备，比如给雇佣兵的无形防具、以增强防御或增强伤害为主的暗金。</li>
   </ul>
+
+  <h2 class="ch">撕裂护符（破免板子）</h2>
+  <p class="notes">撕裂护符是 2.5 加入的小护符，能把对应元素的免疫打破，代价是自己对该元素的抗性大幅下降。共六种，每种对应一类免疫。护符分「潜伏（Latent）」和「更新（Renewed）」两档：掉落的都是潜伏版，惩罚数值随机且很重；在方块里升级成更新版后，惩罚固定变轻，还会附带随机的正面词缀（元素伤害、MF、生命法力等）。</p>
+  <div class="scroll"><table class="runes-table"><thead><tr><th>护符</th><th>英文名</th><th>破除</th><th>自身代价</th></tr></thead><tbody>
+    <tr><td>火</td><td>Flame Rift</td><td>火焰免疫</td><td>自身火抗 -70%（潜伏版可低至 -90%）</td></tr>
+    <tr><td>冰</td><td>Cold Rupture</td><td>冰冷免疫</td><td>自身冰抗 -70%</td></tr>
+    <tr><td>电</td><td>Crack of the Heavens</td><td>闪电免疫</td><td>自身电抗 -70%</td></tr>
+    <tr><td>毒</td><td>Rotting Fissure</td><td>毒素免疫</td><td>自身毒抗 -70%</td></tr>
+    <tr><td>魔法</td><td>Black Cleft</td><td>魔法免疫</td><td>自身魔法抗性 -45%</td></tr>
+    <tr><td>物理</td><td>Bone Break</td><td>物理免疫</td><td>自身受到的物理伤害 +10%</td></tr>
+  </tbody></table></div>
+  <p class="notes">带上之后自己的抗性会被打穿，所以通常要靠其它装备补回来——比如火系配「女巫集会」或「摇曳火焰」，能抵消掉一部分火抗惩罚。</p>
+
+  <h2 class="ch">恐惧使者与护符掉落</h2>
+  <p class="notes">恐惧使者（Terror Herald）是资料片加入的特殊恐惧地区首领：只在地狱难度的恐惧地区刷新，会主动追着玩家跑，血厚伤害高。击杀后等级递进，从一阶一直升到五阶，阶数越高掉率越好；退出或存档回城会重置回一阶，死亡不会重置。</p>
+  <div class="scroll"><table class="runes-table"><thead><tr><th>来源</th><th>大致掉率</th><th>说明</th></tr></thead><tbody>
+    <tr><td>恐惧使者 1–2 阶</td><td>约 1/100</td><td>六种护符按权重分配，冰和火最常见</td></tr>
+    <tr><td>恐惧使者 3–4 阶</td><td>约 1/67</td><td>—</td></tr>
+    <tr><td>恐惧使者 5 阶</td><td>约 1/50</td><td>冰、火约 1/170；魔法（Black Cleft）约 1/1600，最稀有</td></tr>
+    <tr><td>普通怪物 / 幕 Boss</td><td>约 1/255 – 1/165</td><td>六种等权重；吃 MF 和游戏人数加成，数据按 350 MF 估算</td></tr>
+  </tbody></table></div>
+  <p class="notes">一局打满约 87 只五阶使者，平均掉 0.57 个潜伏护符（单人游戏）。想专门刷板子，就把恐惧地区的使者一路推到五阶再清。</p>
+
+  <h2 class="ch">撕裂护符升级（潜伏 → 更新）</h2>
+  <p class="notes">配方是「潜伏护符 + 指定符文 + 指定完美宝石 + 世界之石碎片」。世界之石碎片来自刷普通恐惧地区，本身也用来恐惧整幕；五种碎片各一份放进方块还能开启通往巨神之巅的红门。</p>
+  <div class="scroll"><table class="runes-table"><thead><tr><th>护符</th><th>符文</th><th>宝石</th><th>世界之石碎片</th></tr></thead><tbody>
+    <tr><td>毒 Rotting Fissure</td><td>科 Ko</td><td>完美绿宝石</td><td>西方（Western）</td></tr>
+    <tr><td>冰 Cold Rupture</td><td>卢姆 Lum</td><td>完美蓝宝石</td><td>东方（Eastern）</td></tr>
+    <tr><td>电 Crack of the Heavens</td><td>法尔 Fal</td><td>完美托帕石</td><td>南方（Southern）</td></tr>
+    <tr><td>火 Flame Rift</td><td>埃欧 Io</td><td>完美红宝石</td><td>深渊（Deep）</td></tr>
+    <tr><td>物理 Bone Break</td><td>普尔 Pul</td><td>完美紫水晶</td><td>北方（Northern）</td></tr>
+    <tr><td>魔法 Black Cleft</td><td>马尔 Mal</td><td>完美钻石</td><td>南方 + 深渊 + 北方，共 3 份</td></tr>
+  </tbody></table></div>
+  <p class="notes">魔法板子本身最难掉，升级还要三份碎片，是六种里成本最高的。资料站对碎片的中文译名不统一，方块里对着英文名或图标认更稳妥。</p>
+
+  <h2 class="ch">修理与充能</h2>
+  <div class="scroll"><table class="runes-table"><thead><tr><th>目的</th><th>配方</th></tr></thead><tbody>
+    <tr><td>完全修复武器</td><td>欧特 + 武器</td></tr>
+    <tr><td>完全修复防具</td><td>拉尔 + 防具</td></tr>
+    <tr><td>修复并补满充能</td><td>欧特 + 任意碎裂宝石 + 武器</td></tr>
+    <tr><td>修复并补满充能</td><td>拉尔 + 任意瑕疵宝石 + 防具</td></tr>
+    <tr><td>低质量装备变普通</td><td>埃德 + 任意碎裂宝石 + 低质量武器｜艾尔 + 任意碎裂宝石 + 低质量防具</td></tr>
+  </tbody></table></div>
+  <p class="notes">这几个配方对无形装备特别有用：商店无法修理无形装备，但方块可以。</p>
+
+  <h2 class="ch">洗属性与加孔</h2>
+  <div class="scroll"><table class="runes-table"><thead><tr><th>目的</th><th>配方</th><th>说明</th></tr></thead><tbody>
+    <tr><td>重掷魔法物品</td><td>3 颗完美宝石（任意）+ 魔法物品</td><td>属性全部重掷，物品等级按角色等级重算</td></tr>
+    <tr><td>重掷稀有物品（变差）</td><td>6 颗完美骷髅头 + 稀有物品</td><td>得到低品质稀有物品</td></tr>
+    <tr><td>重掷稀有物品（变好）</td><td>1 颗完美骷髅头 + 稀有物品 + 乔丹之石</td><td>得到高品质稀有物品，代价是一枚 SOJ</td></tr>
+    <tr><td>给稀有物品加孔</td><td>3 颗完美骷髅头 + 稀有物品 + 乔丹之石</td><td>只能加 1 孔</td></tr>
+    <tr><td>给魔法武器加孔</td><td>3 颗碎裂/普通/无瑕宝石 + 魔法武器</td><td>孔数随机，属性会重掷</td></tr>
+    <tr><td>多彩护身符（全抗）</td><td>6 颗完美宝石（六种各一颗）+ 魔法护身符</td><td>做出带全抗前缀的护身符</td></tr>
+  </tbody></table></div>
 
   <h2 class="ch">制作装备（Crafted）</h2>
-  <p class="notes">配方结构固定：<b>魔法品质底材 + 指定符文 + 指定完美宝石 + 1 颗珠宝</b>。四大系列对应的宝石是：</p>
+  <p class="notes">配方是「<b>蓝色魔法品质的指定底材 + 1 颗珠宝 + 指定符文 + 指定完美宝石</b>」。四个系列各用一种宝石，而且<b>每个系列的每个部位都指定了具体底材</b>——不是随便一件该部位的装备都行。表里写的是普通档的名字，该底材的精良档和精英档同样可用（例如血腥头盔可以用头盔、盔、全罩头盔）。</p>
+  <div class="scroll"><table class="runes-table"><thead><tr><th>部位</th><th>血腥 Blood<br><small>完美红宝石</small></th><th>卡那 Caster<br><small>完美紫水晶</small></th><th>狩猎者 Hit Power<br><small>完美蓝宝石</small></th><th>安全 Safety<br><small>完美绿宝石</small></th></tr></thead><tbody>
+    <tr><td>头盔</td><td>头盔 Helm<br>+ 拉尔</td><td>面具 Mask<br>+ 那夫</td><td>全罩盔 Full Helm<br>+ 伊司</td><td>王冠 Crown<br>+ 伊司</td></tr>
+    <tr><td>铠甲</td><td>板甲 Plate Mail<br>+ 书尔</td><td>轻型板甲 Light Plate<br>+ 塔尔</td><td>战地板甲 Field Plate<br>+ 那夫</td><td>胸甲 Breast Plate<br>+ 爱斯</td></tr>
+    <tr><td>盾牌</td><td>钉刺盾 Spiked Shield<br>+ 伊司</td><td>小盾 Small Shield<br>+ 爱斯</td><td>哥特盾 Gothic Shield<br>+ 爱斯</td><td>鸢盾 Kite Shield<br>+ 那夫</td></tr>
+    <tr><td>手套</td><td>重手套 Heavy Gloves<br>+ 那夫</td><td>皮手套 Leather Gloves<br>+ 欧特</td><td>链甲手套 Chain Gloves<br>+ 欧特</td><td>钢手 Gauntlets<br>+ 拉尔</td></tr>
+    <tr><td>腰带</td><td>腰带 Belt<br>+ 塔尔</td><td>轻腰带 Light Belt<br>+ 伊司</td><td>重腰带 Heavy Belt<br>+ 塔尔</td><td>布腰带 Sash<br>+ 塔尔</td></tr>
+    <tr><td>鞋子</td><td>轻型板甲靴 Light Plated Boots<br>+ 爱斯</td><td>鞋 Boots<br>+ 书尔</td><td>链甲靴 Chain Boots<br>+ 拉尔</td><td>板甲靴 Plated Boots<br>+ 欧特</td></tr>
+    <tr><td>护身符</td><td>护身符<br>+ 安姆</td><td>护身符<br>+ 拉尔</td><td>护身符<br>+ 书尔</td><td>护身符<br>+ 书尔</td></tr>
+    <tr><td>戒指</td><td>戒指<br>+ 索尔</td><td>戒指<br>+ 安姆</td><td>戒指<br>+ 安姆</td><td>戒指<br>+ 安姆</td></tr>
+    <tr><td>武器</td><td>斧 Axe<br>+ 欧特</td><td>魔杖 Rod 类<br>+ 特尔</td><td>钝器 Blunt 类<br>+ 特尔</td><td>长矛 Spear<br>+ 索尔</td></tr>
+  </tbody></table></div>
+  <p class="notes">四个系列各自的固定词缀方向：<b>血腥</b>走杀怪回血、吸血、+生命、压碎性打击；<b>卡那</b>走+技能、施法速度、法力、杀怪回魔；<b>狩猎者</b>走命中、致盲目标、压碎、击中使怪物逃跑；<b>安全</b>走防御、抗性、减伤、魔法减伤。成品带 1–4 条该系列的固定词缀，外加随机词缀，所以好东西要靠量产碰运气。</p>
   <ul class="notes">
-    <li>血腥（Blood）——完美红宝石：生命、吸血、压碎性打击</li>
-    <li>卡那（Caster）——完美紫水晶：施法速度、+技能、法力</li>
-    <li>狩猎者（Hit Power）——完美钻石：命中、致盲、压碎</li>
-    <li>安全（Safety）——完美绿宝石：防御、抗性、格挡</li>
+    <li>底材必须是<b>蓝色魔法品质</b>的，白装、黄装、绿装、暗金都不行。</li>
+    <li>成品的物品等级取决于底材等级和角色等级，等级越高能出的词缀档位越好——想刷高属性，用精英底材并且在高等级角色上做。</li>
+    <li>珠宝的属性不会带进成品，随便一颗垃圾珠宝就行。</li>
   </ul>
-  <p class="notes">每个部位（头盔、盔甲、盾牌、手套、腰带、鞋子、戒指、护身符）需要的符文不同，制作出来的装备会带 1–4 条该系列固定词缀加随机词缀。想要精确到部位的符文，看游戏内的赫拉迪克方块配方书。</p>
+
+  <h2 class="ch">戒指 · 护身符 · 护符</h2>
+  <p class="notes">这三类小件的合成都集中在这里。注意区分：<b>护身符</b>（Amulet）是脖子上戴的，<b>护符</b>（Charm）是放背包里的那种小符咒。</p>
+
+  <p class="notes" style="margin-top:18px"><b>戒指与护身符互转</b></p>
+  <div class="scroll"><table class="runes-table"><thead><tr><th>产出</th><th>材料</th><th>说明</th></tr></thead><tbody>
+    <tr><td>魔法护身符</td><td>3 枚魔法戒指</td><td>属性随机重掷，物品等级按角色等级算</td></tr>
+    <tr><td>魔法戒指</td><td>3 条魔法护身符</td><td>同上，可以用来回倒着刷</td></tr>
+  </tbody></table></div>
+
+  <p class="notes" style="margin-top:18px"><b>抗性戒指与多彩护身符</b>——这几个是固定出特定前缀的，属性档位随机但词缀确定。</p>
+  <div class="scroll"><table class="runes-table"><thead><tr><th>产出</th><th>材料</th><th>效果</th></tr></thead><tbody>
+    <tr><td>石榴石戒指 Garnet</td><td>魔法戒指 + 完美红宝石 + 爆裂药水</td><td>火焰抗性</td></tr>
+    <tr><td>钴蓝戒指 Cobalt</td><td>魔法戒指 + 完美蓝宝石 + 解冻药水</td><td>冰冷抗性</td></tr>
+    <tr><td>珊瑚戒指 Coral</td><td>魔法戒指 + 完美托帕石 + 恢复药水（小紫）</td><td>闪电抗性</td></tr>
+    <tr><td>翡翠戒指 Jade</td><td>魔法戒指 + <b>普通</b>绿宝石 + 解毒药水</td><td>毒素抗性</td></tr>
+    <tr><td>多彩护身符 Prismatic</td><td>6 颗完美宝石（六种各一颗）+ 魔法护身符</td><td>全抗性，缺抗时很实用</td></tr>
+  </tbody></table></div>
+  <p class="notes">翡翠戒指用的是普通品质绿宝石，不是完美，这一条很容易记错。四种抗性戒指只保证出对应抗性前缀，数值高低随机，所以缺抗的时候批量做几个挑。</p>
+
+  <p class="notes" style="margin-top:18px"><b>重掷与制作</b></p>
+  <ul class="notes">
+    <li>3 颗完美宝石（任意种类）+ 魔法戒指或护身符 = 属性全部重掷。这是把一枚废戒指洗成好戒指的办法，但物品等级会按当前角色等级重算。</li>
+    <li>制作戒指：魔法戒指 + 珠宝 + 完美宝石 + 符文，四个系列见上面的制作装备表（血腥用索尔，其余三系都用安姆）。</li>
+    <li>制作护身符：魔法护身符 + 珠宝 + 完美宝石 + 符文（血腥安姆、卡那拉尔、狩猎者书尔、安全书尔）。卡那护身符是施法职业常刷的目标。</li>
+    <li>戒指和护身符<b>不能打孔</b>，也没有普通/精良/精英分级，所以升级底材那套配方对它们无效。</li>
+  </ul>
+
+  <p class="notes" style="margin-top:18px"><b>护符（Charm）</b></p>
+  <ul class="notes">
+    <li>小护符、中护符、大护符本身<b>没有任何合成配方</b>，既不能升级也不能重掷，只能靠掉落。</li>
+    <li>唯一能在方块里动的护符是<b>撕裂护符</b>（破免板子），配方见上面「撕裂护符升级」那一节。</li>
+    <li>暗金护符（毁灭之火炬、小天使之戒那类）同样不可合成，只能打 Uber 或兑换获得。</li>
+  </ul>
 
   <h2 class="ch">任务与红门</h2>
   <div class="scroll"><table class="runes-table"><thead><tr><th>用途</th><th>配方</th></tr></thead><tbody>
@@ -210,15 +320,37 @@ section[hidden]{display:none}
     <tr><td>Uber 小 Boss 红门</td><td>恐惧之钥 + 仇恨之钥 + 毁灭之钥</td></tr>
     <tr><td>Uber 崔斯特姆红门</td><td>暗黑破坏神之角 + 巴尔之眼 + 墨菲斯托之脑（在第五幕营地转换）</td></tr>
     <tr><td>赦免代币（洗技能点/属性点）</td><td>扭曲的痛苦精华 + 充能的仇恨精华 + 燃烧的恐惧精华 + 腐臭的毁灭精华</td></tr>
-    <tr><td>巨神古代者红门（术士之治）</td><td>5 尊巨神古代者雕像（被恐惧地区的幕 Boss 掉落）</td></tr>
+    <tr><td>巨神之巅红门（术士之治）</td><td>5 种世界之石碎片各一份（刷恐惧地区获得）</td></tr>
   </tbody></table></div>
 
   <h2 class="ch">杂项</h2>
   <ul class="notes">
-    <li>3 瓶治疗药水 + 3 瓶法力药水 + 1 颗碎裂宝石 = 1 瓶完全恢复药水。</li>
+    <li>3 瓶治疗药水 + 3 瓶法力药水 + 1 颗碎裂宝石 = 恢复药水（小紫）；换成普通品质宝石 = 完全恢复药水（大紫）。</li>
     <li>3 瓶恢复药水 = 1 瓶完全恢复药水。</li>
-    <li>方块本身可以当背包用（能放 12 格），跑图时很方便。</li>
+    <li>3 枚魔法戒指 = 1 条魔法护身符；3 条魔法护身符 = 1 枚魔法戒指。</li>
+    <li>魔法戒指 + 完美红宝石 + 爆裂药水 = 石榴石戒指（火抗）；配完美蓝宝石 + 解冻药水 = 钴蓝戒指（冰抗）；配完美托帕石 + 恢复药水 = 珊瑚戒指（电抗）；配普通绿宝石 + 解毒药水 = 翡翠戒指（毒抗）。</li>
+    <li>2 支箭 = 弩矢；2 支弩矢 = 箭。斧 + 匕首 = 投掷斧；长矛 + 箭 = 标枪。</li>
+    <li>方块本身提供 12 格储物空间，自己只占 2×2，跑图时很方便。</li>
   </ul>
+</section>
+
+
+<section id="tab-book" hidden>
+  <div class="filters">
+    <div class="frow">
+      <input type="search" id="bq" placeholder="搜索配方，如：乔丹 / 打孔 / 完美绿宝石 / 翡翠">
+      <span class="count" id="bcount"></span>
+    </div>
+    <div class="frow" id="bcats"><span class="lab">分类</span></div>
+  </div>
+  <div class="scroll">
+    <table class="runes-table">
+      <thead><tr><th style="width:7.5em">分类</th><th style="width:13em">产出</th><th>材料</th><th style="width:16em">说明</th></tr></thead>
+      <tbody id="bookRows"></tbody>
+    </table>
+  </div>
+  <p class="notes" id="bempty" style="display:none">没有匹配的配方。</p>
+  <p class="notes" style="margin-top:22px">这是游戏内赫拉迪克方块配方书的完整对照表，共 <b id="btotal"></b> 条。材料不标数量的默认为 1 件。符文和宝石升级、制作装备这几类条目多但规律固定，上面的「赫拉迪克方块」标签页里有分类讲解和实战建议。</p>
 </section>
 
 <section id="tab-notes" class="notes" hidden>
@@ -457,8 +589,128 @@ const upEl=document.getElementById("upRows"); if(upEl) upEl.innerHTML=upBody;
 
 document.querySelectorAll("nav.tabs button").forEach(b=>b.onclick=()=>{
   document.querySelectorAll("nav.tabs button").forEach(x=>x.setAttribute("aria-selected",x===b));
-  ["rw","runes","cube","notes"].forEach(t=>document.getElementById("tab-"+t).hidden=(t!==b.dataset.tab));
+  ["rw","runes","cube","book","notes"].forEach(t=>document.getElementById("tab-"+t).hidden=(t!==b.dataset.tab));
 });
+
+
+/* ===== 配方书 ===== */
+const GEMSET=[["紫水晶","Amethyst"],["红宝石","Ruby"],["蓝宝石","Sapphire"],["托帕石","Topaz"],["绿宝石","Emerald"],["钻石","Diamond"],["骷髅头","Skull"]];
+const GT=["碎裂","瑕疵","普通","无瑕","完美"];
+const RECIPES=[];
+const add=(c,o,m,n)=>RECIPES.push([c,o,m,n||""]);
+
+// 符文升级 32
+RUNES.slice(0,32).forEach((r,i)=>{
+  const to=RUNES[i+1], n=i<9?3:(i<20?3:2), gem=i<9?"":GEMS[i-9];
+  add("符文升级",`${to[1]} ${to[0]}（${i+2}号）`,`${n} 颗 ${r[1]} ${r[0]}`+(gem?` + ${gem}`:""), i<9?"仅需符文":(i<20?"3 颗 + 宝石":"2 颗 + 宝石"));
+});
+// 宝石与骷髅头 28
+GEMSET.forEach(([cn,en])=>{ for(let t=0;t<4;t++)
+  add("宝石与骷髅头",`${GT[t+1]}${cn}`,`3 颗 ${GT[t]}${cn}`, t===0?en:"");
+});
+// 打孔与拆孔 9
+add("打孔与拆孔","带孔武器","拉尔 + 安姆 + 完美紫水晶 + 普通无孔武器","孔数随机，上限由物品等级决定");
+add("打孔与拆孔","带孔头盔","拉尔 + 书尔 + 完美蓝宝石 + 普通无孔头盔","同上");
+add("打孔与拆孔","带孔铠甲","塔尔 + 书尔 + 完美托帕石 + 普通无孔铠甲","同上");
+add("打孔与拆孔","带孔盾牌","塔尔 + 安姆 + 完美红宝石 + 普通无孔盾牌","同上");
+add("打孔与拆孔","带孔魔法武器","3 颗碎裂宝石（任意）+ 魔法武器","属性会重掷");
+add("打孔与拆孔","带孔魔法武器","3 颗普通宝石（任意）+ 带孔武器","把白装带孔武器变成蓝装");
+add("打孔与拆孔","带孔魔法武器","3 颗无瑕宝石（任意）+ 魔法武器","属性会重掷");
+add("打孔与拆孔","稀有物品加 1 孔","3 颗完美骷髅头 + 稀有物品 + 乔丹之石","最多只能加一个孔");
+add("打孔与拆孔","清空孔位","海尔 + 城镇传送卷轴 + 已镶嵌物品","里面的符文、宝石、珠宝全部销毁");
+// 升级底材 12
+[["暗金","武器","拉尔 + 索尔 + 完美绿宝石","卢姆 + 普尔 + 完美绿宝石"],
+ ["暗金","防具","塔尔 + 沙尔 + 完美钻石","科 + 蓝姆 + 完美钻石"],
+ ["套装","武器","拉尔 + 索尔 + 完美绿宝石","卢姆 + 普尔 + 完美绿宝石"],
+ ["套装","防具","塔尔 + 沙尔 + 完美钻石","科 + 蓝姆 + 完美钻石"],
+ ["稀有","武器","欧特 + 安姆 + 完美蓝宝石","法尔 + 乌姆 + 完美蓝宝石"],
+ ["稀有","防具","拉尔 + 书尔 + 完美紫水晶","科 + 普尔 + 完美紫水晶"]].forEach(([q,s,a,b])=>{
+  add("升级底材",`精良${q}${s}`,`${a} + 普通${q}${s}`,"只换底材，词缀不变");
+  add("升级底材",`精英${q}${s}`,`${b} + 精良${q}${s}`,"不可逆，需求会上涨");
+});
+// 修理与充能 6
+add("修理与充能","完全修复武器","欧特 + 武器","无形装备也能修");
+add("修理与充能","完全修复防具","拉尔 + 防具","无形装备也能修");
+add("修理与充能","修复并补满充能","欧特 + 任意碎裂宝石 + 武器","补充能技能次数");
+add("修理与充能","修复并补满充能","拉尔 + 任意瑕疵宝石 + 防具","补充能技能次数");
+add("修理与充能","普通品质武器","埃德 + 任意碎裂宝石 + 低质量武器","去掉「残破」等负面前缀");
+add("修理与充能","普通品质防具","艾尔 + 任意碎裂宝石 + 低质量防具","同上");
+// 洗属性 3
+add("洗属性","重掷魔法物品","3 颗完美宝石（任意）+ 魔法物品","物品等级按角色等级重算");
+add("洗属性","低品质稀有物品","6 颗完美骷髅头 + 稀有物品","会变差，极少用");
+add("洗属性","高品质稀有物品","1 颗完美骷髅头 + 稀有物品 + 乔丹之石","代价是一枚 SOJ");
+// 制作装备 36
+const CRAFT=[
+ ["血腥","完美红宝石",[["头盔","头盔 Helm","拉尔"],["铠甲","板甲 Plate Mail","书尔"],["盾牌","钉刺盾 Spiked Shield","伊司"],["手套","重手套 Heavy Gloves","那夫"],["腰带","腰带 Belt","塔尔"],["鞋子","轻型板甲靴 Light Plated Boots","爱斯"],["护身符","护身符","安姆"],["戒指","戒指","索尔"],["武器","斧 Axe","欧特"]]],
+ ["卡那","完美紫水晶",[["头盔","面具 Mask","那夫"],["铠甲","轻型板甲 Light Plate","塔尔"],["盾牌","小盾 Small Shield","爱斯"],["手套","皮手套 Leather Gloves","欧特"],["腰带","轻腰带 Light Belt","伊司"],["鞋子","鞋 Boots","书尔"],["护身符","护身符","拉尔"],["戒指","戒指","安姆"],["武器","魔杖 Rod 类","特尔"]]],
+ ["狩猎者","完美蓝宝石",[["头盔","全罩盔 Full Helm","伊司"],["铠甲","战地板甲 Field Plate","那夫"],["盾牌","哥特盾 Gothic Shield","爱斯"],["手套","链甲手套 Chain Gloves","欧特"],["腰带","重腰带 Heavy Belt","塔尔"],["鞋子","链甲靴 Chain Boots","拉尔"],["护身符","护身符","书尔"],["戒指","戒指","安姆"],["武器","钝器 Blunt 类","特尔"]]],
+ ["安全","完美绿宝石",[["头盔","王冠 Crown","伊司"],["铠甲","胸甲 Breast Plate","爱斯"],["盾牌","鸢盾 Kite Shield","那夫"],["手套","钢手 Gauntlets","拉尔"],["腰带","布腰带 Sash","塔尔"],["鞋子","板甲靴 Plated Boots","欧特"],["护身符","护身符","书尔"],["戒指","戒指","安姆"],["武器","长矛 Spear","索尔"]]]];
+CRAFT.forEach(([ser,gem,rows])=>rows.forEach(([slot,base,rune])=>
+  add("制作装备",`${ser}${slot}`,`魔法${base} + 珠宝 + ${rune} + ${gem}`,"底材三档通用")));
+// 戒指护身符 7
+add("戒指护身符","魔法护身符","3 枚魔法戒指","属性随机重掷");
+add("戒指护身符","魔法戒指","3 条魔法护身符","属性随机重掷");
+add("戒指护身符","石榴石戒指 Garnet","魔法戒指 + 完美红宝石 + 爆裂药水","固定出火焰抗性");
+add("戒指护身符","钴蓝戒指 Cobalt","魔法戒指 + 完美蓝宝石 + 解冻药水","固定出冰冷抗性");
+add("戒指护身符","珊瑚戒指 Coral","魔法戒指 + 完美托帕石 + 恢复药水","固定出闪电抗性");
+add("戒指护身符","翡翠戒指 Jade","魔法戒指 + 普通绿宝石 + 解毒药水","注意是普通品质绿宝石");
+add("戒指护身符","多彩护身符 Prismatic","6 颗完美宝石（六种各一颗）+ 魔法护身符","固定出全抗性");
+// 撕裂护符 6
+[["毒 Rotting Fissure","科","完美绿宝石","西方 Western"],
+ ["冰 Cold Rupture","卢姆","完美蓝宝石","东方 Eastern"],
+ ["电 Crack of the Heavens","法尔","完美托帕石","南方 Southern"],
+ ["火 Flame Rift","埃欧","完美红宝石","深渊 Deep"],
+ ["物理 Bone Break","普尔","完美紫水晶","北方 Northern"],
+ ["魔法 Black Cleft","马尔","完美钻石","南方 + 深渊 + 北方，共 3 份"]].forEach(([nm,rune,gem,shard])=>
+  add("撕裂护符",`更新版 ${nm}`,`潜伏版${nm.split(" ")[0]}护符 + ${rune} + ${gem} + ${shard}世界之石碎片`,"惩罚变轻并附带正面词缀"));
+// 药水 4
+add("药水","恢复药水（小紫）","3 瓶治疗药水 + 3 瓶法力药水 + 任意碎裂宝石","");
+add("药水","完全恢复药水（大紫）","3 瓶治疗药水 + 3 瓶法力药水 + 任意普通宝石","");
+add("药水","完全恢复药水（大紫）","3 瓶恢复药水","");
+add("药水","解毒药水","窒息瓦斯药水 + 任意治疗药水","");
+// 任务与红门 7
+add("任务与红门","赫拉迪克法杖","君王之杖 + 毒蛇护身符","第二幕任务");
+add("任务与红门","卡林的意志","卡林的连枷 + 心 + 眼 + 脑","第三幕任务");
+add("任务与红门","秘密奶牛关传送门","维特的腿 + 城镇传送卷轴书","在第一幕营地转换");
+add("任务与红门","Uber 小 Boss 红门","恐惧之钥 + 仇恨之钥 + 毁灭之钥","随机通往三个小关之一");
+add("任务与红门","Uber 崔斯特姆红门","暗黑破坏神之角 + 巴尔之眼 + 墨菲斯托之脑","在第五幕营地转换");
+add("任务与红门","赦免代币","扭曲的痛苦精华 + 充能的仇恨精华 + 燃烧的恐惧精华 + 腐臭的毁灭精华","洗一次技能点和属性点");
+add("任务与红门","巨神之巅红门","5 种世界之石碎片各一份","术士之治资料片");
+// 物品转换 7
+add("物品转换","投掷斧","任意斧 + 任意匕首","");
+add("物品转换","标枪","任意长矛 + 箭","");
+add("物品转换","弩矢","2 组箭","");
+add("物品转换","箭","2 组弩矢","");
+add("物品转换","尖刺魔法盾","魔法盾 + 钉刺木棒 + 2 颗骷髅头","固定出「尖刺」后缀");
+add("物品转换","野蛮长柄武器","任意钻石 + 克里斯剑 + 法杖 + 腰带","固定出「野蛮」前缀");
+add("物品转换","吸血之剑","4 瓶治疗药水 + 普通红宝石 + 魔法剑","固定出吸血后缀");
+
+const BCATS=["全部",...[...new Set(RECIPES.map(r=>r[0]))]];
+let bst={q:"",cat:"全部"};
+function brender(){
+  const q=bst.q.trim().toLowerCase();
+  const list=RECIPES.filter(r=>{
+    if(bst.cat!=="全部" && r[0]!==bst.cat) return false;
+    if(q && !(r[0]+" "+r[1]+" "+r[2]+" "+r[3]).toLowerCase().includes(q)) return false;
+    return true;
+  });
+  document.getElementById("bcount").textContent=`共 ${list.length} / ${RECIPES.length} 条`;
+  document.getElementById("btotal").textContent=RECIPES.length;
+  document.getElementById("bempty").style.display=list.length?"none":"block";
+  document.getElementById("bookRows").innerHTML=list.map(r=>
+    `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td style="color:var(--muted)">${esc(r[3])}</td></tr>`).join("");
+}
+(function(){
+  const el=document.getElementById("bcats");
+  BCATS.forEach(v=>{
+    const b=document.createElement("button");b.className="chip";b.type="button";b.textContent=v;
+    b.setAttribute("aria-pressed",bst.cat===v);
+    b.onclick=()=>{bst.cat=v;el.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c.textContent===v));brender()};
+    el.appendChild(b);
+  });
+})();
+document.getElementById("bq").addEventListener("input",e=>{bst.q=e.target.value;brender()});
+brender();
 
 document.getElementById("themeBtn").onclick=()=>{
   const cur=document.documentElement.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");
