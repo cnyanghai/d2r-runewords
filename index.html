@@ -260,114 +260,27 @@ section[hidden]{display:none}
 
   <h2 class="ch">制作装备（Crafted）</h2>
   <p class="notes">配方是「<b>蓝色魔法品质的指定底材 + 1 颗珠宝 + 指定符文 + 指定完美宝石</b>」。四个系列各用一种宝石，而且<b>每个系列的每个部位都指定了具体底材</b>——不是随便一件该部位的装备都行。表里写的是普通档的名字，该底材的精良档和精英档同样可用（例如血腥头盔可以用头盔、盔、全罩头盔）。</p>
-  <div class="scroll"><table class="runes-table"><thead><tr><th>部位</th><th>血腥 Blood<br><small>完美红宝石</small></th><th>施法 Caster<br><small>完美紫水晶</small></th><th>打击 Hit Power<br><small>完美蓝宝石</small></th><th>安全 Safety<br><small>完美绿宝石</small></th></tr></thead><tbody>
-    <tr><td>头盔</td><td>头盔 Helm<br>+ 拉尔</td><td>面具 Mask<br>+ 那夫</td><td>全罩盔 Full Helm<br>+ 伊司</td><td>王冠 Crown<br>+ 伊司</td></tr>
-    <tr><td>铠甲</td><td>板甲 Plate Mail<br>+ 书尔</td><td>轻型板甲 Light Plate<br>+ 塔尔</td><td>战地板甲 Field Plate<br>+ 那夫</td><td>胸甲 Breast Plate<br>+ 爱斯</td></tr>
-    <tr><td>盾牌</td><td>钉刺盾 Spiked Shield<br>+ 伊司</td><td>小盾 Small Shield<br>+ 爱斯</td><td>哥特盾 Gothic Shield<br>+ 爱斯</td><td>鸢盾 Kite Shield<br>+ 那夫</td></tr>
-    <tr><td>手套</td><td>重手套 Heavy Gloves<br>+ 那夫</td><td>皮手套 Leather Gloves<br>+ 欧特</td><td>链甲手套 Chain Gloves<br>+ 欧特</td><td>钢手 Gauntlets<br>+ 拉尔</td></tr>
-    <tr><td>腰带</td><td>腰带 Belt<br>+ 塔尔</td><td>轻腰带 Light Belt<br>+ 伊司</td><td>重腰带 Heavy Belt<br>+ 塔尔</td><td>布腰带 Sash<br>+ 塔尔</td></tr>
-    <tr><td>鞋子</td><td>轻型板甲靴 Light Plated Boots<br>+ 爱斯</td><td>鞋 Boots<br>+ 书尔</td><td>链甲靴 Chain Boots<br>+ 拉尔</td><td>板甲靴 Plated Boots<br>+ 欧特</td></tr>
-    <tr><td>护身符</td><td>护身符<br>+ 安姆</td><td>护身符<br>+ 拉尔</td><td>护身符<br>+ 书尔</td><td>护身符<br>+ 书尔</td></tr>
-    <tr><td>戒指</td><td>戒指<br>+ 索尔</td><td>戒指<br>+ 安姆</td><td>戒指<br>+ 安姆</td><td>戒指<br>+ 安姆</td></tr>
-    <tr><td>武器</td><td>斧 Axe<br>+ 欧特</td><td>魔杖 Rod 类<br>+ 特尔</td><td>钝器 Blunt 类<br>+ 特尔</td><td>长矛 Spear<br>+ 索尔</td></tr>
+  <div class="scroll"><table class="runes-table"><thead><tr><th style="width:5em">部位</th><th>血腥 Blood<br><small style="color:var(--muted)">完美红宝石</small><br><small style="color:var(--rune)">每件必带：1-3% 吸血 + 10-20 生命</small></th><th>施法 Caster<br><small>旧译「卡那」</small><br><small style="color:var(--muted)">完美紫水晶</small><br><small style="color:var(--rune)">每件必带：法力回复 4-10% + 10-20 法力</small></th><th>打击 Hit Power<br><small style="color:var(--muted)">完美蓝宝石</small><br><small style="color:var(--rune)">每件必带：被击中 5% 放 4 级冰霜新星 + 反伤 3-10</small></th><th>安全 Safety<br><small style="color:var(--muted)">完美绿宝石</small><br><small style="color:var(--rune)">每件必带：魔法减伤 1-2 + 物理减伤 1-4</small></th></tr></thead><tbody>
+    <tr><td><b>头盔</b></td><td>头盔 Helm<br><span style="color:var(--muted)">+ 拉尔</span><br><span style="color:var(--gold)">→ 5-10% 致命一击</span></td><td>面具 Mask<br><span style="color:var(--muted)">+ 那夫</span><br><span style="color:var(--gold)">→ 1-4% 偷取法力</span></td><td>全罩盔 Full Helm<br><span style="color:var(--muted)">+ 伊司</span><br><span style="color:var(--gold)">→ +25-50 远程防御</span></td><td>王冠 Crown<br><span style="color:var(--muted)">+ 伊司</span><br><span style="color:var(--gold)">→ +10-30% 增强防御、电抗 +5-10%</span></td></tr>
+    <tr><td><b>铠甲</b></td><td>板甲 Plate Mail<br><span style="color:var(--muted)">+ 书尔</span><br><span style="color:var(--gold)">→ 杀死恶魔回血 +1-3</span></td><td>轻型板甲 Light Plate<br><span style="color:var(--muted)">+ 塔尔</span><br><span style="color:var(--gold)">→ 杀怪回魔 +1-3</span></td><td>战地板甲 Field Plate<br><span style="color:var(--muted)">+ 那夫</span><br><span style="color:var(--gold)">→ +10-20% 恢复速度</span></td><td>胸甲 Breast Plate<br><span style="color:var(--muted)">+ 爱斯</span><br><span style="color:var(--gold)">→ +10-30% 增强防御、冻结时间减半</span></td></tr>
+    <tr><td><b>盾牌</b></td><td>钉刺盾 Spiked Shield<br><span style="color:var(--muted)">+ 伊司</span><br><span style="color:var(--gold)">→ 反伤 4-7</span></td><td>小盾 Small Shield<br><span style="color:var(--muted)">+ 爱斯</span><br><span style="color:var(--gold)">→ +5-10% 格挡率</span></td><td>哥特盾 Gothic Shield<br><span style="color:var(--muted)">+ 爱斯</span><br><span style="color:var(--gold)">→ +5-10% 格挡率</span></td><td>鸢盾 Kite Shield<br><span style="color:var(--muted)">+ 那夫</span><br><span style="color:var(--gold)">→ +10-30% 增强防御、<b>魔法抗性 +5-10%</b></span></td></tr>
+    <tr><td><b>手套</b></td><td>重手套 Heavy Gloves<br><span style="color:var(--muted)">+ 那夫</span><br><span style="color:var(--gold)">→ <b>5-10% 压碎性打击</b></span></td><td>皮手套 Leather Gloves<br><span style="color:var(--muted)">+ 欧特</span><br><span style="color:var(--gold)">→ 杀怪回魔 +1-3</span></td><td>链甲手套 Chain Gloves<br><span style="color:var(--muted)">+ 欧特</span><br><span style="color:var(--gold)">→ 击退</span></td><td>钢手 Gauntlets<br><span style="color:var(--muted)">+ 拉尔</span><br><span style="color:var(--gold)">→ +10-30% 增强防御、冰抗 +5-10%</span></td></tr>
+    <tr><td><b>腰带</b></td><td>腰带 Belt<br><span style="color:var(--muted)">+ 塔尔</span><br><span style="color:var(--gold)">→ 5-10% 撕裂伤口</span></td><td>轻腰带 Light Belt<br><span style="color:var(--muted)">+ 伊司</span><br><span style="color:var(--gold)">→ <b>+5-10% 施法速度</b></span></td><td>重腰带 Heavy Belt<br><span style="color:var(--muted)">+ 塔尔</span><br><span style="color:var(--gold)">→ 5-10% 伤害转为法力</span></td><td>布腰带 Sash<br><span style="color:var(--muted)">+ 塔尔</span><br><span style="color:var(--gold)">→ +10-30% 增强防御、毒抗 +5-10%</span></td></tr>
+    <tr><td><b>鞋子</b></td><td>轻型板甲靴 Light Plated Boots<br><span style="color:var(--muted)">+ 爱斯</span><br><span style="color:var(--gold)">→ 生命恢复 +5-10</span></td><td>鞋 Boots<br><span style="color:var(--muted)">+ 书尔</span><br><span style="color:var(--gold)">→ 最大法力 +2-5%</span></td><td>链甲靴 Chain Boots<br><span style="color:var(--muted)">+ 拉尔</span><br><span style="color:var(--gold)">→ +25-50 远程防御</span></td><td>板甲靴 Plated Boots<br><span style="color:var(--muted)">+ 欧特</span><br><span style="color:var(--gold)">→ +10-30% 增强防御、火抗 +5-10%</span></td></tr>
+    <tr><td><b>护身符</b></td><td>护身符<br><span style="color:var(--muted)">+ 安姆</span><br><span style="color:var(--gold)">→ +5-10% 跑步速度（吸血升到 1-4%）</span></td><td>护身符<br><span style="color:var(--muted)">+ 拉尔</span><br><span style="color:var(--gold)">→ <b>+5-10% 施法速度</b></span></td><td>护身符<br><span style="color:var(--muted)">+ 书尔</span><br><span style="color:var(--gold)">→ 3-11% 击中使怪物逃跑</span></td><td>护身符<br><span style="color:var(--muted)">+ 书尔</span><br><span style="color:var(--gold)">→ +1-10% 格挡率</span></td></tr>
+    <tr><td><b>戒指</b></td><td>戒指<br><span style="color:var(--muted)">+ 索尔</span><br><span style="color:var(--gold)">→ +1-5 力量</span></td><td>戒指<br><span style="color:var(--muted)">+ 安姆</span><br><span style="color:var(--gold)">→ +1-5 精力</span></td><td>戒指<br><span style="color:var(--muted)">+ 安姆</span><br><span style="color:var(--gold)">→ +1-5 敏捷</span></td><td>戒指<br><span style="color:var(--muted)">+ 安姆</span><br><span style="color:var(--gold)">→ +1-5 体力</span></td></tr>
+    <tr><td><b>武器</b></td><td>斧 Axe<br><span style="color:var(--muted)">+ 欧特</span><br><span style="color:var(--gold)">→ +35-60% 增强伤害（吸血升到 1-4%）</span></td><td>魔杖 Rod 类<br><span style="color:var(--muted)">+ 特尔</span><br><span style="color:var(--gold)">→ 最大法力 +1-5%</span></td><td>钝器 Blunt 类<br><span style="color:var(--muted)">+ 特尔</span><br><span style="color:var(--gold)">→ +35-60% 增强伤害</span></td><td>长矛 Spear<br><span style="color:var(--muted)">+ 索尔</span><br><span style="color:var(--gold)">→ +5-10% 增强防御</span></td></tr>
   </tbody></table></div>
-  <p class="notes">成品的属性分两部分：<b>固定词缀</b>（这条线保证给，每件必带）加上 <b>1–4 条随机魔法词缀</b>（和蓝装同一个池子，档位看物品等级）。所以同一个配方做出来的东西保底部分完全一样，差别全在随机那截。四条线的固定词缀见下面四张表。</p>
+  <p class="notes">成品的属性分两部分：<b>固定词缀</b>（这条线保证给，每件必带）加上 <b>1–4 条随机魔法词缀</b>（和蓝装同一个池子，档位看物品等级）。所以同一个配方做出来的东西保底部分完全一样，差别全在随机那截。每条线的保底词缀直接标在下面表格里。</p>
 
-  <h2 class="ch">四个系列的固定词缀</h2>
-  <p class="notes"><b>血腥 Blood</b>（完美红宝石）——核心是吸血和生命，每个部位都带 <b>1-3% 吸血 + 10-20 生命</b>，第三条按部位变。</p>
-  <div class="scroll"><table class="runes-table"><thead><tr><th style="width:7em">部位</th><th>第三条固定词缀</th></tr></thead><tbody>
-    <tr><td>武器</td><td>+35-60% 增强伤害（吸血提升到 1-4%）</td></tr>
-    <tr><td>头盔</td><td>5-10% 致命一击</td></tr>
-    <tr><td>铠甲</td><td>杀死恶魔回血 +1-3</td></tr>
-    <tr><td>盾牌</td><td>反伤 4-7</td></tr>
-    <tr><td>手套</td><td>5-10% 压碎性打击</td></tr>
-    <tr><td>腰带</td><td>5-10% 撕裂伤口</td></tr>
-    <tr><td>鞋子</td><td>生命恢复 +5-10</td></tr>
-    <tr><td>护身符</td><td>+5-10% 跑步速度（吸血提升到 1-4%）</td></tr>
-    <tr><td>戒指</td><td>+1-5 力量</td></tr>
-  </tbody></table></div>
-
-  <p class="notes" style="margin-top:20px"><b>施法 Caster</b>（完美紫水晶）——核心是<b>法力</b>，不是加技能。每个部位都带 <b>法力回复 4-10% + 10-20 法力</b>。</p>
-  <div class="scroll"><table class="runes-table"><thead><tr><th style="width:7em">部位</th><th>第三条固定词缀</th></tr></thead><tbody>
-    <tr><td>腰带</td><td><b>+5-10% 施法速度</b></td></tr>
-    <tr><td>护身符</td><td><b>+5-10% 施法速度</b></td></tr>
-    <tr><td>头盔</td><td>1-4% 偷取法力</td></tr>
-    <tr><td>铠甲</td><td>杀怪回魔 +1-3</td></tr>
-    <tr><td>手套</td><td>杀怪回魔 +1-3</td></tr>
-    <tr><td>鞋子</td><td>最大法力 +2-5%</td></tr>
-    <tr><td>武器</td><td>最大法力 +1-5%</td></tr>
-    <tr><td>盾牌</td><td>+5-10% 格挡率</td></tr>
-    <tr><td>戒指</td><td>+1-5 精力</td></tr>
-  </tbody></table></div>
-  <p class="notes">施法速度只在<b>腰带和护身符</b>保底，这两样才是刷施法系列的真正目标。+技能不在固定词缀里，只能靠随机那截碰。</p>
-
-  <p class="notes" style="margin-top:20px"><b>打击 Hit Power</b>（完美蓝宝石）——名字和效果最不符的一条线，实际核心是<b>被击中时触发冰霜新星加反伤</b>。每个部位都带 <b>5% 几率释放 4 级冰霜新星（被击中时）+ 反伤 3-10</b>。</p>
-  <div class="scroll"><table class="runes-table"><thead><tr><th style="width:7em">部位</th><th>第三条固定词缀</th></tr></thead><tbody>
-    <tr><td>武器</td><td>+35-60% 增强伤害</td></tr>
-    <tr><td>铠甲</td><td>+10-20% 恢复速度</td></tr>
-    <tr><td>头盔</td><td>+25-50 远程防御</td></tr>
-    <tr><td>鞋子</td><td>+25-50 远程防御</td></tr>
-    <tr><td>盾牌</td><td>+5-10% 格挡率</td></tr>
-    <tr><td>手套</td><td>击退</td></tr>
-    <tr><td>腰带</td><td>5-10% 伤害转为法力</td></tr>
-    <tr><td>护身符</td><td>3-11% 击中使怪物逃跑</td></tr>
-    <tr><td>戒指</td><td>+1-5 敏捷</td></tr>
-  </tbody></table></div>
-
-  <p class="notes" style="margin-top:20px"><b>安全 Safety</b>（完美绿宝石）——核心是防御和减伤，每个部位都带 <b>魔法减伤 1-2 + 物理减伤 1-4</b>。</p>
-  <div class="scroll"><table class="runes-table"><thead><tr><th style="width:7em">部位</th><th>其余固定词缀</th></tr></thead><tbody>
-    <tr><td>头盔</td><td>+10-30% 增强防御、电抗 +5-10%</td></tr>
-    <tr><td>铠甲</td><td>+10-30% 增强防御、<b>冻结时间减半</b></td></tr>
-    <tr><td>盾牌</td><td>+10-30% 增强防御、<b>魔法抗性 +5-10%</b></td></tr>
-    <tr><td>手套</td><td>+10-30% 增强防御、冰抗 +5-10%</td></tr>
-    <tr><td>腰带</td><td>+10-30% 增强防御、毒抗 +5-10%</td></tr>
-    <tr><td>鞋子</td><td>+10-30% 增强防御、火抗 +5-10%</td></tr>
-    <tr><td>护身符</td><td>+1-10% 格挡率</td></tr>
-    <tr><td>戒指</td><td>+1-5 体力</td></tr>
-    <tr><td>武器</td><td>+5-10% 增强防御</td></tr>
-  </tbody></table></div>
-  <p class="notes">安全盾的<b>魔法抗性</b>值得单独提一句：这条属性在全游戏里极其罕见，安全盾是少数几个能拿到的途径之一。</p>
-
-  <p class="notes" style="margin-top:20px"><b>值得刷的几样</b>：施法腰带和施法护身符（施法速度保底）、血腥手套（压碎性打击）、安全盾（魔法抗性）。其余部位的固定词缀大多偏弱，不如直接找对应的暗金。</p>
   <ul class="notes">
-    <li>底材必须是<b>蓝色魔法品质</b>的，白装、黄装、绿装、暗金都不行。</li>
-    <li>成品的物品等级取决于底材等级和角色等级，等级越高能出的词缀档位越好——想刷高属性，用精英底材并且在高等级角色上做。</li>
+    <li>表里金色那行是<b>保底词缀</b>，做出来一定有。除此之外还会随机出 1–4 条普通魔法词缀（和蓝装同一个池子），档位看物品等级。</li>
+    <li>底材必须是<b>蓝色魔法品质</b>，白装、黄装、绿装、暗金都不行——这一点和符文之语正好相反。</li>
+    <li>物品等级由底材等级和角色等级共同决定，越高能出的随机词缀档位越好。想刷高属性，用精英底材并且在高等级角色上做。</li>
     <li>珠宝的属性不会带进成品，随便一颗垃圾珠宝就行。</li>
   </ul>
-
-  <h2 class="ch">戒指 · 护身符 · 护符</h2>
-  <p class="notes">这三类小件的合成都集中在这里。注意区分：<b>护身符</b>（Amulet）是脖子上戴的，<b>护符</b>（Charm）是放背包里的那种小符咒。</p>
-
-  <p class="notes" style="margin-top:18px"><b>戒指与护身符互转</b></p>
-  <div class="scroll"><table class="runes-table"><thead><tr><th>产出</th><th>材料</th><th>说明</th></tr></thead><tbody>
-    <tr><td>魔法护身符</td><td>3 枚魔法戒指</td><td>属性随机重掷，物品等级按角色等级算</td></tr>
-    <tr><td>魔法戒指</td><td>3 条魔法护身符</td><td>同上，可以用来回倒着刷</td></tr>
-  </tbody></table></div>
-
-  <p class="notes" style="margin-top:18px"><b>抗性戒指与多彩护身符</b>——这几个是固定出特定前缀的，属性档位随机但词缀确定。</p>
-  <div class="scroll"><table class="runes-table"><thead><tr><th>产出</th><th>材料</th><th>效果</th></tr></thead><tbody>
-    <tr><td>石榴石戒指 Garnet</td><td>魔法戒指 + 完美红宝石 + 爆裂药水</td><td>火焰抗性</td></tr>
-    <tr><td>钴蓝戒指 Cobalt</td><td>魔法戒指 + 完美蓝宝石 + 解冻药水</td><td>冰冷抗性</td></tr>
-    <tr><td>珊瑚戒指 Coral</td><td>魔法戒指 + 完美托帕石 + 恢复药水（小紫）</td><td>闪电抗性</td></tr>
-    <tr><td>翡翠戒指 Jade</td><td>魔法戒指 + <b>普通</b>绿宝石 + 解毒药水</td><td>毒素抗性</td></tr>
-    <tr><td>多彩护身符 Prismatic</td><td>6 颗完美宝石（六种各一颗）+ 魔法护身符</td><td>全抗性，缺抗时很实用</td></tr>
-  </tbody></table></div>
-  <p class="notes">翡翠戒指用的是普通品质绿宝石，不是完美，这一条很容易记错。四种抗性戒指只保证出对应抗性前缀，数值高低随机，所以缺抗的时候批量做几个挑。</p>
-
-  <p class="notes" style="margin-top:18px"><b>重掷与制作</b></p>
-  <ul class="notes">
-    <li>3 颗完美宝石（任意种类）+ 魔法戒指或护身符 = 属性全部重掷。这是把一枚废戒指洗成好戒指的办法，但物品等级会按当前角色等级重算。</li>
-    <li>制作戒指：魔法戒指 + 珠宝 + 完美宝石 + 符文，四个系列见上面的制作装备表（血腥用索尔，施法/打击/安全都用安姆）。</li>
-    <li>制作护身符：魔法护身符 + 珠宝 + 完美宝石 + 符文（血腥安姆、施法拉尔、打击书尔、安全书尔）。施法护身符保底 +5-10% 施法速度，是施法职业最值得刷的一样。</li>
-    <li>戒指和护身符<b>不能打孔</b>，也没有普通/精良/精英分级，所以升级底材那套配方对它们无效。</li>
-  </ul>
-
-  <p class="notes" style="margin-top:18px"><b>护符（Charm）</b></p>
-  <ul class="notes">
-    <li>小护符、中护符、大护符本身<b>没有任何合成配方</b>，既不能升级也不能重掷，只能靠掉落。</li>
-    <li>唯一能在方块里动的护符是<b>撕裂护符</b>（破免板子），配方见上面「撕裂护符升级」那一节。</li>
-    <li>暗金护符（毁灭之火炬、小天使之戒那类）同样不可合成，只能打 Uber 或兑换获得。</li>
-  </ul>
+  <p class="notes"><b>真正值得批量刷的几样</b>：<b>施法腰带</b>和<b>施法护身符</b>（施法速度保底，施法职业的主要目标）、<b>血腥手套</b>（压碎性打击）、<b>安全盾</b>（魔法抗性——这条属性在全游戏里极其罕见，安全盾是少数几个来源之一）。其余部位的保底词缀偏弱，不如直接找对应的暗金。</p>
+  <p class="notes"><b>打击系列</b>的名字和效果最不搭：叫 Hit Power，实际核心是被击中时触发冰霜新星加反伤，和命中率没关系。</p>
 
   <h2 class="ch">任务与红门</h2>
   <div class="scroll"><table class="runes-table"><thead><tr><th>用途</th><th>配方</th></tr></thead><tbody>
